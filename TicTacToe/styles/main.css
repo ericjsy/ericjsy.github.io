@@ -52,8 +52,8 @@
 		box-shadow: 0 0 0 4px #ECEAE0, 2px 1px 3px 4px #ECEAE0, -2px -1px 3px 4px #ECEAE0;
 		color: #221E1D;
 		padding: 1vh 1vw;
-		height: 80vh;
-		margin: 8vh auto 0 auto;
+		height: 90vh;
+		margin: 4vh auto 0 auto;
 		width: 80vw;
 	}
 	
@@ -81,7 +81,7 @@
 		font-variant: small-caps;
 		font-weight: bold;
 		font-size: 1em;
-		height: 65vh;
+		height: 70vh;
 		letter-spacing: 5px;
 		line-height: 65vh;
 		margin-top: 5vh;
@@ -91,14 +91,14 @@
 	
 	#board {
 		float: left;
-		height: 70vh;
+		height: 80vh;
 		text-align: center;
 		width: 40vw;
 	}
 	
 	#board table {
 		border-collapse: collapse;
-		height: 60vh;
+		height: 70vh;
 		margin: 5vh auto 0 auto;
 		width: 30vw;
 	}
@@ -145,7 +145,7 @@
 	
 	#info {
 		float: right;
-		height: 60vh;
+		height: 65vh;
 		padding-left: 1vw;
 		width: 39vw;
 	}
@@ -206,7 +206,7 @@
 	}
 	
 	#settings {
-		height: 10vh;
+		height: 15vh;
 		padding-left: 1vw;
 		overflow: auto;
 		width: 39vw;
