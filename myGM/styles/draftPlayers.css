@@ -1,0 +1,412 @@
+html, body {
+	cursor: default;
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+	
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+	
+	nav {
+		box-shadow: 0 0 8px 2px #000000;
+		height: 5vh;
+		position: relative;
+		width: 100vw;
+		z-index: 1;
+	}
+	
+	nav div {
+		color: #D9D9D9;
+		float: left;
+		font-variant: small-caps;
+		font-weight: bold;
+		height: 5vh;
+		letter-spacing: 1px;
+		line-height: 5vh;
+		text-align: center;
+		text-shadow: 1px 1px 1px #000000;
+		width: calc(85vw/4);
+	}
+	
+	#help {
+		background-color: #D9D9D9;
+		box-shadow: inset -1px -1px 1px 1px #1A2930, inset 1px 1px 1px 1px #1A2930;
+		color: #0A1612;
+		text-shadow: 1px 1px 1px #FFFFFF;
+		width: 15vw;
+	}
+	
+	#currentTab {
+		background-color: #1A2930;
+		/*box-shadow: inset 0 0 3px 2px #000000;*/
+	}
+	
+	nav div:not(#help):not(#currentTab) {
+		background-color: #0A1612;
+	}	
+	
+	main {
+		width: 100vw;
+	}
+	
+	.title, #timer {
+		background-color: #1A2930;
+		color: #D9D9D9;
+		font-variant: small-caps;
+		height: 5vh;
+		letter-spacing: 1px;
+		line-height: 5vh;
+		position: relative;
+		text-shadow: 1px 1px 1px #000000;
+		width: 100%;
+	}
+	
+	#timer {
+		background-color: #1A2930;
+		color: #D9D9D9;
+		float: left;
+		height: 5vh;
+		line-height: 5vh;
+		text-align: center;
+		width: 30%;
+	}
+	
+	#timer h2 {
+		font-size: 1em;
+		margin: 0;
+	}
+	
+	#availablePlayers .title {
+		float: left;
+		width: 70%;
+	}
+	
+	.title h2 {
+		font-size: 1em;
+		padding-left: 10px;
+		margin: 0;
+	}
+
+	.title .tooltip, #timer .tooltip {
+		background-color: #0A1612;
+		border-radius: 6px;
+		bottom: -150%;
+		color: #FFFFFF;
+		padding: 5px 0;
+		position: absolute;
+		left: 50%;
+		margin-left: -60px;
+		opacity: 0;
+		text-align: center;
+		transition: opacity 1s;
+		visibility: hidden;
+		width: 120px;
+		z-index: 1;
+	}
+
+	.title .tooltip::after, #timer .tooltip::after {
+		border-width: 5px;
+		border-style: solid;
+		border-color: transparent transparent #0A1612 transparent;
+		bottom: 100%;
+		content: "";
+		left: 50%;
+		margin-left: -5px;
+		position: absolute;
+	}
+
+	.title:hover .tooltip, #timer:hover .tooltip {
+		opacity: 1;
+		visibility: visible;
+	}
+	
+	/*
+	.info {
+		background-color: #0A1612;
+		border-radius: 50%;
+		box-shadow: inset -1px -1px 0 0 #D9D9D9, inset 1px 1px 0 0 #000000;
+		display: inline-block;
+		font-family: "Times New Roman", Calibri, serif;
+		font-size: 1em;
+		font-variant: normal;
+		height: 3vh;
+		position: relative;
+		text-align: center;
+		vertical-align: middle;
+		width: 3vh;
+	}
+	
+	.shift {
+		bottom: 1.1vh;
+		height: 3vh;
+		left: 1vh;
+		position: absolute;
+	}
+	*/
+	
+	input:focus, select:focus, button:focus {
+		outline: none;
+	}
+	
+	#filterList {
+		background-color: #D9D9D9;
+		box-shadow: inset -1px -1px 2px 1px #1A2930;
+		float: left;
+		height: 70vh;
+		width: 15vw;
+	}
+	
+	#filterList h3 {
+		border-bottom: 1px solid #0A1612;
+		color: #0A1612;
+		font-size: 1em;
+		margin: 0 1vw 5px 1vw;
+		width: 13vw
+	}
+	
+	.toggle {
+		float: right;
+	}
+		
+	#searchFilter {
+		border: 0;
+		border-radius: 5px;
+		box-shadow: inset 1px 1px 1px #1A2930;
+		height: 6vh;
+		margin: 2vh 1vw;
+		text-align: center;
+		width: 13vw;
+	}
+	
+	#orderFilter button, #dropdownFilter select {
+		color: #0A1612;
+		font-family: 'Lato', sans-serif;
+		font-variant: small-caps;
+		font-size: 1em;
+		font-weight: bold;
+		letter-spacing: 1px;
+		margin: 0 1vw 5px 1vw;
+		width: 13vw;
+	}
+	
+	#otherFilter input {
+		margin: 1px 1vw 3px 1vw;		
+	}
+	
+	#otherFilter label {
+		color: #0A1612;
+		font-variant: small-caps;
+		font-weight: bold;
+		letter-spacing: 1px;
+	}
+	
+	#dropdownFilter {
+		margin-top: 10px;
+	}
+	
+	#playerDraft {
+		height: 70vh;
+		float: left;
+		width: calc(85vw/2);
+	}
+	
+	#availablePlayers {
+		height: 40vh;
+		width: calc(85vw/2);
+	}
+	
+	#availablePlayers select option:first-child {
+		margin-top: 2vh;
+	}
+	
+	#availablePlayers select option:hover {
+		box-shadow: 0 0 10px 100px #D9D9D9 inset;
+		transition: all .2s ease-in-out;	
+	} 
+	
+	#availablePlayers select option:checked {
+		box-shadow: 0 0 10px 100px #1A2930 inset;
+	}
+	
+	#availablePlayers option {
+		font-family: 'Lato', sans-serif;
+		font-size: 1em;
+		padding: 12px;
+	}
+	
+	#playerList {
+		border: 0;
+		width: 110%;
+	}
+	
+	#playerQueue {
+		background-color: #FFFFFF;
+		float: left;
+		height: 30vh;
+		position: absolute;
+		width: calc(85vw/2);
+		/*width: calc(85vw/4);*/
+	}
+	
+	/*
+	#scratchpad {
+		float: left;
+		height: 30vh;
+		left: calc(15vw + (85vw/4));
+		position: absolute;
+		width: calc(85vw/4);
+	}
+	*/
+	
+	#playerCard {
+		background-color: #0A1612;
+		box-shadow: inset 0 0 20px #000000;
+		float: left;
+		height: 70vh;
+		width: calc(85vw/4);
+	}
+	
+	#cardHeading {
+		height: 10vh;
+		margin: 0 0 0 1vw;
+		position: relative;
+	}
+	
+	#cardText {
+		float: left;
+		width: 77%
+	}
+	
+	#cardOverall {
+		color: #D9D9D9;
+		height: 10vh;
+		float: left;
+		padding-right: 3%;
+		text-align: center;
+		width: 20%;
+	}
+	
+	#overallTitle {
+		font-family: 'Lato', sans-serif;
+		font-size: 0.7em;
+		text-transform: uppercase;
+	}
+	
+	#overallNumber {
+		font-size: 2em;
+		font-family: 'Lato', sans-serif;
+		font-weight: bold;
+	}
+	
+	#cardName, #cardPosition {
+		color: #D9D9D9;
+		display: inline-block;
+		font-family: 'Lato', sans-serif;
+		font-variant: small-caps;
+		font-weight: bold;
+		letter-spacing: 1px;
+		position: absolute;
+	}
+	
+	#cardName {
+		bottom: 25px;
+	}
+	
+	#cardPosition {
+		font-size: 0.8em;
+		bottom: 5px;
+	}
+	
+	#cardFN {
+		font-size: 1em;
+	}
+	
+	#cardLN {
+		font-size: 1.5em;
+	}
+	
+	#cardGraphic {
+		background-color: white;
+		border-top: 1vh solid red;
+		box-shadow: inset 10px 0 10px -10px #000000, inset -10px 0 10px -10px #000000;
+		height: 24vh;
+		width: 100%;
+	}
+	
+	#cardDetails {
+		color: #D9D9D9;
+		height: 7vh;
+		font-family: 'Lato', sans-serif;
+		font-size: 0.8em;
+		font-variant: small-caps;
+		font-weight: bold;
+		letter-spacing: 1px;
+		margin: 1vh 0 1vh 1vw;
+		width: calc(100%-1vw);
+	}
+	
+	#cardInfo {
+		height: 13vh;
+		width: 100%;
+	}
+	
+	#cardInfo table {
+		color: #D9D9D9;
+		font-family: 'Lato', sans-serif;
+		font-variant: small-caps;
+		font-weight: bold;
+		margin: 2vh 0;
+		text-align: center;
+		width: 100%;
+	}
+	
+	#cardInfo th {
+		font-size: 1.2em;
+		height: 100%;
+		padding: 0;
+	}
+	
+	#cardInfo td {
+		font-size: 2em;
+		height: 100%;
+		padding: 0;
+	}
+	
+	#cardAdd {
+		height: 7vh;
+		width: 100%;
+	}
+	
+	#cardAdd button {
+		background-color: #D9D9D9;
+		border: 1px solid black;
+		box-shadow: inset 0 0 10px #000000;
+		color: #0A1612;
+		font-family: 'Lato', sans-serif;
+		font-variant: small-caps;
+		font-size: 1.5em;
+		font-weight: bold;
+		height: 100%;
+		width: 100%;
+	}
+	
+	#draftSummary {
+		float: left;
+		height: 70vh;
+		width: calc(85vw/4);
+	}
+	
+	#userInfo {
+		background-color: #0A1612;
+		box-shadow: inset 0 20px 20px -20px #000000;
+		float: left;
+		height: 25vh;
+		width: 100vw;
+	}
+	
+}

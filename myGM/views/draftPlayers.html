@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>myGeneralManager</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="A Hockey Simulator">
+	<meta name="author" content="esy">
+
+	<link rel="stylesheet" href="../styles/draftPlayers.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	
+</head>
+
+<body>
+	
+	<header>
+	</header>
+	
+	<nav>
+		<div id="help">Help
+		</div>
+		<div>Select Team
+		</div>
+		<div id="currentTab">Draft Players
+		</div>
+		<div>Set Line-up
+		</div>
+		<div>Start Season
+		</div>
+	</nav>
+	
+	<main>
+		<div id="filterList">
+			<div class="title">
+				<h2>Filters</h2>
+				<span class="tooltip">Tooltip text</span>
+			</div>
+			<input type="text" id="searchFilter" name="searchFilter" placeholder="Search Player" onkeyup="searchList('lname')">
+			<h3>Order By: <span class="toggle">&#9650;</span></h3>
+			<div id="orderFilter">
+				<button onclick="orderList('lname')">Last Name</button><br>
+				<button onclick="orderList('fname')">First Name</button><br>
+				<button onclick="orderList('ranking')">Overall</button>
+			</div>
+			<h3>Filter By: <span class="toggle">&#9650;</span></h3>
+			<div id="otherFilter">
+				<input type="radio" id="allFilter" name="filter" value="allFilter" onchange="filterList()" checked="checked">
+				<label for="allFilter">All</label><br>
+				<input type="radio" id="forwardFilter" name="filter" value="forwardFilter" onchange="filterList()">
+				<label for="forwardFilter">Forwards</label><br>
+				<input type="radio" id="centerFilter" name="filter" value="centerFilter" onchange="filterList()">
+				<label for="centerFilter">Centers</label><br>
+				<input type="radio" id="leftwingFilter" name="filter" value="leftwingFilter" onchange="filterList()">
+				<label for="leftwingFilter">Left Wings</label><br>
+				<input type="radio" id="rightwingFilter" name="filter" value="rightwingFilter" onchange="filterList()">
+				<label for="rightwingFilter">Right Wings</label><br>
+				<input type="radio" id="defenseFilter" name="filter" value="defenseFilter" onchange="filterList()">
+				<label for="defenseFilter">Defensemen</label><br>
+				<input type="radio" id="goalieFilter" name="filter" value="goalieFilter" onchange="filterList()">
+				<label for="goalieFilter">Goalies</label><br>
+				<input type="radio" id="teamFilter" name="filter" value="teamFilter" onchange="initiateDropDown()">
+				<label for="goalieFilter">Team</label><br>
+			</div>
+			<div id="dropdownFilter" onchange="dropdownList()">
+				<select size="1" id="teamList" class="hidden">
+					<option value="LGE" id="LGE">All Teams</option>
+				</select>
+			</div>
+		</div>
+		<div id="playerDraft">
+			<div id="availablePlayers">
+				<div class="title">
+					<h2>Available Players</h2>
+					<span class="tooltip">Tooltip text</span>
+				</div>
+				<div id="timer">
+					<h2>2:00</h2>
+					<span class="tooltip">Tooltip text</span>
+				</div>
+				<div onchange="selectPlayer()">
+					<select size="5" id="playerList">
+						<option id="loadingMessage">Loading list . . .</option>
+					</select>
+				</div>
+			</div>
+			<div id="playerQueue">
+				<div class="title">
+					<h2>Queue</h2>
+					<span class="tooltip">Tooltip text</span>
+				</div>
+			</div>
+			<!--
+			<div id="scratchpad">
+				<div class="title">
+					<h2>Scratch Pad</h2>
+					<span class="tooltip">Tooltip text</span>
+				</div>
+			</div>
+			-->
+		</div>
+		<div id="playerCard">
+			<div class="title">
+				<h2>Player Card</h2>
+				<span class="tooltip">Tooltip text</span>
+			</div>
+			<div id="cardHeading">
+				<div id="cardText">
+					<div id="cardName">
+						<span id="cardFN">Alexander</span>
+						<span id="cardLN">Ovechkin</span>
+					</div>
+					<br>
+					<div id="cardPosition">
+						<span id="cardPos">Left Wing</span>
+						<span class="divider">&vert;</span>
+						<span id="cardType">Sniper</span>
+					</div>
+				</div>
+				<div id="cardOverall">
+					<span id="overallTitle">Overall</span>
+					<span id="overallNumber">99</span>
+				</div>
+			</div>
+			<div id="cardGraphic">
+			</div>
+			<div id="cardDetails">
+				<div>
+					<span>Team: Washington Capitals</span>
+					<br>
+					<span>Nation: Russia</span>
+				</div>
+			</div>
+			<div id="cardInfo">
+				<table>
+					<tr>
+						<th>OFF</th>
+						<th>DEF</th>
+						<th>PHY</th>
+					</tr>
+					<tr>
+						<td>99</td>
+						<td>99</td>
+						<td>99</td>
+					</tr>
+				</table>
+			</div>
+			<div id="cardAdd">
+				<button onclick="addPlayer()">Add Player</button>
+			</div>
+		</div>
+		<div id="draftSummary">
+			<div class="title">
+				<h2>Draft Summary</h2>
+				<span class="tooltip">Tooltip text</span>
+			</div>
+		</div>
+		<div id="userInfo">
+		</div>
+	</main>
+	
+</body>
+</html>
