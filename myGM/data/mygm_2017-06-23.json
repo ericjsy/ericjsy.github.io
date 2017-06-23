@@ -1,0 +1,252 @@
+{
+  "players" : [ {
+    "defense" : 90,
+    "drafted" : false,
+    "fname" : "Sidney",
+    "lname" : "Crosby",
+    "offense" : 95,
+    "overall" : 97,
+    "physical" : 85,
+    "position" : "C",
+    "ranking" : 1,
+    "team" : "PIT"
+  }, {
+    "defense" : 80,
+    "drafted" : false,
+    "fname" : "Alexander",
+    "lname" : "Ovechkin",
+    "offense" : 97,
+    "overall" : 95,
+    "physical" : 92,
+    "position" : "LW",
+    "ranking" : 2,
+    "team" : "WSH"
+  }, {
+    "defense" : 90,
+    "drafted" : false,
+    "fname" : "John",
+    "lname" : "Tavares",
+    "offense" : 93,
+    "overall" : 92,
+    "physical" : 85,
+    "position" : "C",
+    "ranking" : 8,
+    "team" : "NYI"
+  }, {
+    "defense" : 90,
+    "drafted" : false,
+    "fname" : "Shea",
+    "lname" : "Weber",
+    "offense" : 87,
+    "overall" : 91,
+    "physical" : 90,
+    "position" : "D",
+    "ranking" : 9,
+    "team" : "MTL"
+  }, {
+    "drafted" : false,
+    "fname" : "Matt",
+    "lname" : "Murray",
+    "overall" : 93,
+    "position" : "G",
+    "ranking" : 4,
+    "team" : "PIT"
+  }, {
+    "defense" : 83,
+    "drafted" : false,
+    "fname" : "Vladimir",
+    "lname" : "Tarasenko",
+    "offense" : 92,
+    "overall" : 92,
+    "physical" : 79,
+    "position" : "RW",
+    "ranking" : 7,
+    "team" : "STL"
+  }, {
+    "defense" : 85,
+    "drafted" : false,
+    "fname" : "Joe",
+    "lname" : "Pavelski",
+    "offense" : 92,
+    "overall" : 93,
+    "physical" : 85,
+    "position" : "C",
+    "ranking" : 5,
+    "team" : "SJS"
+  }, {
+    "defense" : 86,
+    "drafted" : false,
+    "fname" : "Jonathan",
+    "lname" : "Toews",
+    "offense" : 85,
+    "overall" : 90,
+    "physical" : 84,
+    "position" : "C",
+    "ranking" : 10,
+    "team" : "CHI"
+  }, {
+    "drafted" : false,
+    "fname" : "Carey",
+    "lname" : "Price",
+    "overall" : 95,
+    "position" : "G",
+    "ranking" : 3,
+    "team" : "MTL"
+  }, {
+    "defense" : 90,
+    "drafted" : false,
+    "fname" : "Erik",
+    "lname" : "Karlsson",
+    "offense" : 92,
+    "overall" : 93,
+    "physical" : 84,
+    "position" : "D",
+    "ranking" : 6,
+    "team" : "OTT"
+  }, {
+    "defense" : 70,
+    "drafted" : false,
+    "fname" : "Bo",
+    "lname" : "Horvat",
+    "offense" : 70,
+    "overall" : 70,
+    "physical" : 70,
+    "position" : "C",
+    "ranking" : 11,
+    "team" : "VAN"
+  }, {
+    "defense" : 50,
+    "drafted" : false,
+    "fname" : "Luca",
+    "lname" : "Sbisa",
+    "offense" : 50,
+    "overall" : 50,
+    "physical" : 50,
+    "position" : "D",
+    "ranking" : 12,
+    "team" : "VAN"
+  } ],
+  "teams" : {
+    "ANA" : {
+      "city" : "Anaheim",
+      "name" : "Ducks"
+    },
+    "ARI" : {
+      "city" : "Arizona",
+      "name" : "Coyotes"
+    },
+    "BOS" : {
+      "city" : "Boston",
+      "name" : "Bruins"
+    },
+    "BUF" : {
+      "city" : "Buffalo",
+      "name" : "Sabres"
+    },
+    "CAR" : {
+      "city" : "Carolina",
+      "name" : "Hurricanes"
+    },
+    "CBJ" : {
+      "city" : "Columbus",
+      "name" : "Blue Jackets"
+    },
+    "CGY" : {
+      "city" : "Calgary",
+      "name" : "Flames"
+    },
+    "CHI" : {
+      "city" : "Chicago",
+      "name" : "Blackhawks"
+    },
+    "COL" : {
+      "city" : "Colorado",
+      "name" : "Avalanche"
+    },
+    "DAL" : {
+      "city" : "Dallas",
+      "name" : "Stars"
+    },
+    "DET" : {
+      "city" : "Detroit",
+      "name" : "Red Wings"
+    },
+    "EDM" : {
+      "city" : "Edmonton",
+      "name" : "Oilers"
+    },
+    "FLA" : {
+      "city" : "Florida",
+      "name" : "Panthers"
+    },
+    "LOS" : {
+      "city" : "Los Angeles",
+      "name" : "Kings"
+    },
+    "MIN" : {
+      "city" : "Minnesota",
+      "name" : "Wild"
+    },
+    "MTL" : {
+      "city" : "Montreal",
+      "name" : "Canadians"
+    },
+    "NJD" : {
+      "city" : "New Jersey",
+      "name" : "Devils"
+    },
+    "NSH" : {
+      "city" : "Nashville",
+      "name" : "Predators"
+    },
+    "NYI" : {
+      "city" : "New York",
+      "name" : "Islanders"
+    },
+    "NYR" : {
+      "city" : "New York",
+      "name" : "Rangers"
+    },
+    "OTT" : {
+      "city" : "Ottawa",
+      "name" : "Senators"
+    },
+    "PHI" : {
+      "city" : "Philidelphia",
+      "name" : "Flyers"
+    },
+    "PIT" : {
+      "city" : "Pittsburgh",
+      "name" : "Penguins"
+    },
+    "SJS" : {
+      "city" : "San Jose",
+      "name" : "Sharks"
+    },
+    "STL" : {
+      "city" : "St. Louis",
+      "name" : "Blues"
+    },
+    "TBL" : {
+      "city" : "Tampa Bay",
+      "name" : "Lightning"
+    },
+    "TOR" : {
+      "city" : "Toronto",
+      "name" : "Maple Leafs"
+    },
+    "VAN" : {
+      "city" : "Vancouver",
+      "name" : "Canucks"
+    },
+    "WIN" : {
+      "city" : "Winnipeg",
+      "name" : "Jets"
+    },
+    "WSH" : {
+      "city" : "Washington",
+      "name" : "Capitals",
+      "primary" : "#FF0000"
+    }
+  }
+}

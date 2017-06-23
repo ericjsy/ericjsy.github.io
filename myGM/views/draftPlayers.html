@@ -12,14 +12,13 @@
 	<link rel="stylesheet" href="../styles/draftPlayers.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 </head>
 
 <body>
 	
 	<header>
-	</header>
-	
-	<nav>
 		<div id="help">Help
 		</div>
 		<div>Select Team
@@ -30,7 +29,7 @@
 		</div>
 		<div>Start Season
 		</div>
-	</nav>
+	</header>
 	
 	<main>
 		<div id="filterList">
@@ -39,13 +38,13 @@
 				<span class="tooltip">Tooltip text</span>
 			</div>
 			<input type="text" id="searchFilter" name="searchFilter" placeholder="Search Player" onkeyup="searchList('lname')">
-			<h3>Order By: <span class="toggle">&#9650;</span></h3>
+			<h3>Order By: <span id="orderArrow" class="toggle">&#9660;</span></h3>
 			<div id="orderFilter">
 				<button onclick="orderList('lname')">Last Name</button><br>
 				<button onclick="orderList('fname')">First Name</button><br>
 				<button onclick="orderList('ranking')">Overall</button>
 			</div>
-			<h3>Filter By: <span class="toggle">&#9650;</span></h3>
+			<h3>Filter By: <span id="otherArrow" class="toggle">&#9660;</span></h3>
 			<div id="otherFilter">
 				<input type="radio" id="allFilter" name="filter" value="allFilter" onchange="filterList()" checked="checked">
 				<label for="allFilter">All</label><br>
@@ -158,8 +157,21 @@
 			</div>
 		</div>
 		<div id="userInfo">
+			<div id="teamBreakdown">
+			</div>
+			<div id="canvas">
+				<canvas id="layer1">Your browser does not support the HTML5 canvas tag.</canvas>
+				<canvas id="layer2"></canvas>
+			</div>
+			<div id="placeholder">
+			</div>
 		</div>
 	</main>
+	
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+	<script src="../scripts/fbconnect.js"></script>	
+	<script src="../scripts/canvas.js"></script>
+	<script src="../scripts/toggle.js"></script>
 	
 </body>
 </html>

@@ -12,7 +12,7 @@ html, body {
 @media only screen and (min-width: 768px) {
     /* For desktop: */
 	
-	nav {
+	header {
 		box-shadow: 0 0 8px 2px #000000;
 		height: 5vh;
 		position: relative;
@@ -20,7 +20,7 @@ html, body {
 		z-index: 1;
 	}
 	
-	nav div {
+	header div {
 		color: #D9D9D9;
 		float: left;
 		font-variant: small-caps;
@@ -46,7 +46,7 @@ html, body {
 		/*box-shadow: inset 0 0 3px 2px #000000;*/
 	}
 	
-	nav div:not(#help):not(#currentTab) {
+	header div:not(#help):not(#currentTab) {
 		background-color: #0A1612;
 	}	
 	
@@ -183,6 +183,10 @@ html, body {
 		width: 13vw;
 	}
 	
+	#orderFilter, #otherFilter {
+		display: none;
+	}
+	
 	#orderFilter button, #dropdownFilter select {
 		color: #0A1612;
 		font-family: 'Lato', sans-serif;
@@ -266,6 +270,7 @@ html, body {
 	#playerCard {
 		background-color: #0A1612;
 		box-shadow: inset 0 0 20px #000000;
+		text-shadow: 1px 1px 1px #000000;
 		float: left;
 		height: 70vh;
 		width: calc(85vw/4);
@@ -392,7 +397,14 @@ html, body {
 		font-size: 1.5em;
 		font-weight: bold;
 		height: 100%;
+		transition: color 0.35s ease-in-out, background-color 0.2s ease-in-out;
 		width: 100%;
+	}
+	
+	#cardAdd button:hover {
+		background-color: #0A1612;
+		color: #D9D9D9;
+		cursor: pointer;
 	}
 	
 	#draftSummary {
@@ -407,6 +419,42 @@ html, body {
 		float: left;
 		height: 25vh;
 		width: 100vw;
+	}
+	
+	#teamBreakdown {
+		float: left;
+		height: 25vh;
+		width: 57.5vw;
+	}
+	
+	#canvas {
+		background-color: blue;
+		float: left;
+		height: 25vh;
+		position: relative;
+		width: calc(85vw/4)
+	}
+
+	#layer1, #layer2 {
+		height: 25vh;
+		margin: 0 10%;
+		position: absolute;
+		width: 80%;
+	}
+
+	#layer1 {
+		z-index:0;
+	}
+
+	#layer2 {
+		z-index: 1;
+	}
+	
+	#placeholder {
+		background-color: orange;
+		float: left;
+		height: 25vh;
+		width: calc(85vw/4);
 	}
 	
 }
