@@ -108,19 +108,18 @@
 			<div id="cardHeading">
 				<div id="cardText">
 					<div id="cardName">
-						<span id="cardFN">Jean-Sébastien</span>
-						<span id="cardLN">Michaud</span>
+						<span id="cardFN"></span>
+						<span id="cardLN"></span>
 					</div>
 					<br>
 					<div id="cardPosition">
-						<span id="cardPos">Left Wing</span>
-						<span class="divider">&vert;</span>
-						<span id="cardType">Two-Way Forward</span>
+						<span id="cardPos"></span>
+						<span id="cardType"></span>
 					</div>
 				</div>
 				<div id="cardOverall">
-					<span id="overallTitle">Overall</span>
-					<span id="overallNumber">99</span>
+					<span id="overallTitle"></span>
+					<span id="overallNumber"></span>
 				</div>
 			</div>
 			<div id="cardGraphic">
@@ -128,22 +127,23 @@
 			</div>
 			<div id="cardDetails">
 				<div>
-					<span>Team: Vancouver Thunderbirds</span>
+					<span id="cardTeam"></span>
 					<br>
-					<span>Nation: Canada</span>
+					<span id="cardNation"></span>
 				</div>
 			</div>
 			<div id="cardInfo">
+				<div id="cardPlaceholder">Select a Player!</div>
 				<table>
 					<tr>
-						<th>OFF</th>
-						<th>DEF</th>
-						<th>PHY</th>
+						<th id="cat1"></th>
+						<th id="cat2"></th>
+						<th id="cat3"></th>
 					</tr>
 					<tr>
-						<td>99</td>
-						<td>99</td>
-						<td>99</td>
+						<td id="cardOffense"></td>
+						<td id="cardDefense"></td>
+						<td id="cardPhysical"></td>
 					</tr>
 				</table>
 			</div>
@@ -171,6 +171,7 @@
 	
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 	<script src="../scripts/fbconnect.js"></script>	
+	<script src="../scripts/mainPlayerDraft.js"></script>
 	<script src="../scripts/canvas.js"></script>
 	<script src="../scripts/toggle.js"></script>
 	

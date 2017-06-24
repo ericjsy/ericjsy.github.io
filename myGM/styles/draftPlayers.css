@@ -4,6 +4,10 @@ html, body {
 	margin: 0;
 }
 
+.hidden {
+	display: none;
+}
+
 @media only screen and (min-width: 600px) {
     /* For tablets: */
 	
@@ -269,9 +273,8 @@ html, body {
 	
 	#playerCard {
 		background-color: #00ACDE;
-		background: linear-gradient(#98d9ec, #00ACDE);
+		background: linear-gradient(#0A1612, #1A2930);
 		box-shadow: inset 0 0 20px #000000;
-		text-shadow: 1px 1px 1px #D6D6D6;
 		float: left;
 		height: 70vh;
 		width: calc(85vw/4);
@@ -339,11 +342,10 @@ html, body {
 	
 	#cardGraphic {
 		background-color: white;
-		background-image: url(../assets/logos/VAN2.png);
-		background-position: left-center;
+		background-position: right top;
 		background-repeat: no-repeat;
-		background-size: contain;
-		border-top: 1vh solid #FCD701;
+		background-size: 75px 75px;
+		border-top: 1vh solid #D6D6D6;
 		box-shadow: inset 10px 0 10px -10px #000000, inset -10px 0 10px -10px #000000, inset 0 10px 10px -10px #000000, inset 0 -10px 10px -10px #000000;
 		height: 24vh;
 		width: 100%;
@@ -368,7 +370,21 @@ html, body {
 	
 	#cardInfo {
 		height: 13vh;
+		position: relative;
 		width: 100%;
+	}
+	
+	#cardPlaceholder {
+		color: #D6D6D6;
+		font-family: 'Lato', sans-serif;
+		font-size: 1.2em;
+		font-variant: small-caps;
+		font-weight: bold;
+		letter-spacing: 1px;
+		left: 50%;
+		position: absolute;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%)
 	}
 	
 	#cardInfo table {
