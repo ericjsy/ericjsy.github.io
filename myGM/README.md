@@ -25,5 +25,5 @@
 - Added funtionality to timer.
 - Moved search bar to the Available Players section.
 - Added functionality to the search bar.
-- Adjusted tool tip position for timer.
+- Added content to timer tool tip and adjusted position.
 - Added functionality to the Filters. 
