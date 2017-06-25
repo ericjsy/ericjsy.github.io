@@ -1,9 +1,42 @@
 html, body {
 	cursor: default;
-	font-family: 'Lato', sans-serif;
 	margin: 0;
 }
 
+/* Text styling */
+html, body, button, select, option, input {
+	font-family: 'Lato', sans-serif;
+	font-variant: small-caps;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+header div, .title, #timer, #cardPlaceholder, #cardAdd button:hover, #searchFilter, .title .tooltip, #timer .tooltip {
+	color: #D9D9D9;
+}
+
+#help, #filterList h3, #orderFilter button, #dropdownFilter select, #otherFilter label, #cardAdd button {
+	color: #0A1612; 
+}
+
+/* Backgrounds */
+#playerQueue, #cardGraphic {
+	background-color: #FFFFFF;
+}
+
+#help, #filterList, #cardAdd button {
+	background-color: #D9D9D9;
+}
+
+header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .tooltip, #playerCard, #cardAdd button:hover, #userInfo {
+	background-color: #0A1612;
+}	
+
+#currentTab, .title, #timer, #search {
+	background-color: #1A2930;
+}
+
+/* Misc. */
 .hidden {
 	display: none;
 }
@@ -30,10 +63,7 @@ html, body {
 	}
 	
 	header div {
-		color: #D9D9D9;
 		float: left;
-		font-variant: small-caps;
-		font-weight: bold;
 		height: 5vh;
 		letter-spacing: 1px;
 		line-height: 5vh;
@@ -43,32 +73,18 @@ html, body {
 	}
 	
 	#help {
-		background-color: #D9D9D9;
 		box-shadow: inset -1px -1px 1px 1px #1A2930, inset 1px 1px 1px 1px #1A2930;
-		color: #0A1612;
 		text-shadow: 1px 1px 1px #FFFFFF;
 		width: 15vw;
 	}
-	
-	#currentTab {
-		background-color: #1A2930;
-		/*box-shadow: inset 0 0 3px 2px #000000;*/
-	}
-	
-	header div:not(#help):not(#currentTab) {
-		background-color: #0A1612;
-	}	
 	
 	main {
 		width: 100vw;
 	}
 	
-	.title, #timer {
-		background-color: #1A2930;
-		color: #D9D9D9;
+	.title, #timer, #search {
 		font-variant: small-caps;
 		height: 5vh;
-		letter-spacing: 1px;
 		line-height: 5vh;
 		position: relative;
 		text-shadow: 1px 1px 1px #000000;
@@ -76,18 +92,17 @@ html, body {
 	}
 	
 	#timer, #search {
-		background-color: #1A2930;
-		color: #D9D9D9;
 		float: left;
-		height: 5vh;
-		line-height: 5vh;
 		text-align: center;
+		width: 30%;
+	}
+	
+	#timer {
 		-webkit-transition: color 2s ease-in-out;
 		-moz-transition: color 2s ease-in-out;
 		-ms-transition: color 2s ease-in-out;
 		-o-transition: color 2s ease-in-out;
 		transition: color 2s ease-in-out;
-		width: 30%;
 	}
 	
 	#timer h2 {
@@ -96,16 +111,9 @@ html, body {
 	}
 	
 	#searchFilter {
-		background-color: #0A1612;
 		border: 0;
 		border-radius: 5px;
-		box-shadow: inset 1px 1px 1px #1A2930;
-		color: #D6D6D6;
-		font-family: 'Lato', sans-serif;
-		font-variant: small-caps;
 		font-size: 0.8em;
-		font-weight: bold;
-		letter-spacing: 1px;
 		height: 4.5vh;
 		padding: 0;
 		text-align: center;
@@ -124,9 +132,7 @@ html, body {
 	}
 
 	.title .tooltip, #timer .tooltip {
-		background-color: #0A1612;
 		border-radius: 6px;
-		color: #FFFFFF;
 		font-weight: normal;
 		font-size: 0.8em;
 		line-height: 1em;
@@ -204,7 +210,6 @@ html, body {
 	}
 	
 	#filterList {
-		background-color: #D9D9D9;
 		box-shadow: inset -1px -1px 2px 1px #1A2930;
 		float: left;
 		height: 70vh;
@@ -213,7 +218,6 @@ html, body {
 	
 	#filterList h3 {
 		border-bottom: 1px solid #0A1612;
-		color: #0A1612;
 		font-size: 1em;
 		margin: 0 1vw 5px 1vw;
 		width: 13vw
@@ -224,12 +228,7 @@ html, body {
 	}
 	
 	#orderFilter button, #dropdownFilter select {
-		color: #0A1612;
-		font-family: 'Lato', sans-serif;
-		font-variant: small-caps;
 		font-size: 1em;
-		font-weight: bold;
-		letter-spacing: 1px;
 		margin: 0 1vw 5px 1vw;
 		width: 13vw;
 	}
@@ -239,7 +238,6 @@ html, body {
 	}
 	
 	#otherFilter label {
-		color: #0A1612;
 		font-variant: small-caps;
 		font-weight: bold;
 		letter-spacing: 1px;
@@ -270,7 +268,6 @@ html, body {
 	}
 	
 	#availablePlayers option {
-		font-family: 'Lato', sans-serif;
 		font-size: 1em;
 		padding: 12px;
 	}
@@ -281,26 +278,13 @@ html, body {
 	}
 	
 	#playerQueue {
-		background-color: #FFFFFF;
 		float: left;
 		height: 30vh;
 		position: absolute;
 		width: calc(85vw/2);
-		/*width: calc(85vw/4);*/
 	}
-	
-	/*
-	#scratchpad {
-		float: left;
-		height: 30vh;
-		left: calc(15vw + (85vw/4));
-		position: absolute;
-		width: calc(85vw/4);
-	}
-	*/
 	
 	#playerCard {
-		background-color: #00ACDE;
 		background: linear-gradient(#0A1612, #1A2930);
 		box-shadow: inset 0 0 20px #000000;
 		float: left;
@@ -328,24 +312,16 @@ html, body {
 	}
 	
 	#overallTitle {
-		font-family: 'Lato', sans-serif;
 		font-size: 0.7em;
-		font-weight: bold;
 		text-transform: uppercase;
 	}
 	
 	#overallNumber {
 		font-size: 2em;
-		font-family: 'Lato', sans-serif;
-		font-weight: bold;
 	}
 	
 	#cardName, #cardPosition {
 		display: inline-block;
-		font-family: 'Lato', sans-serif;
-		font-variant: small-caps;
-		font-weight: bold;
-		letter-spacing: 1px;
 		position: absolute;
 	}
 	
@@ -367,7 +343,6 @@ html, body {
 	}
 	
 	#cardGraphic {
-		background-color: white;
 		background-position: right top;
 		background-repeat: no-repeat;
 		background-size: 75px 75px;
@@ -384,11 +359,7 @@ html, body {
 	
 	#cardDetails {
 		height: 7vh;
-		font-family: 'Lato', sans-serif;
 		font-size: 0.9em;
-		font-variant: small-caps;
-		font-weight: bold;
-		letter-spacing: 1px;
 		margin: 1vh 0 1vh 1vw;
 		width: calc(100%-1vw);
 	}
@@ -400,12 +371,7 @@ html, body {
 	}
 	
 	#cardPlaceholder {
-		color: #D6D6D6;
-		font-family: 'Lato', sans-serif;
 		font-size: 1.2em;
-		font-variant: small-caps;
-		font-weight: bold;
-		letter-spacing: 1px;
 		left: 50%;
 		position: absolute;
 		-webkit-transform: translateX(-50%);
@@ -413,9 +379,6 @@ html, body {
 	}
 	
 	#cardInfo table {
-		font-family: 'Lato', sans-serif;
-		font-variant: small-caps;
-		font-weight: bold;
 		margin: 2vh 0;
 		text-align: center;
 		width: 100%;
@@ -439,22 +402,15 @@ html, body {
 	}
 	
 	#cardAdd button {
-		background-color: #D9D9D9;
 		border: 1px solid black;
 		box-shadow: inset 0 0 10px #000000;
-		color: #0A1612;
-		font-family: 'Lato', sans-serif;
-		font-variant: small-caps;
 		font-size: 1.5em;
-		font-weight: bold;
 		height: 100%;
 		transition: color 0.35s ease-in-out, background-color 0.2s ease-in-out;
 		width: 100%;
 	}
 	
 	#cardAdd button:hover {
-		background-color: #0A1612;
-		color: #D9D9D9;
 		cursor: pointer;
 	}
 	
@@ -465,7 +421,6 @@ html, body {
 	}
 	
 	#userInfo {
-		background-color: #0A1612;
 		box-shadow: inset 0 20px 20px -20px #000000;
 		float: left;
 		height: 25vh;

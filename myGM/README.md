@@ -29,4 +29,7 @@
 - Added functionality to the Filters. 
 
 ### v0.3.1 - June 25, 2017
-- Added assets for team logos
+- Added assets for team logos.
+
+### v0.3.2 - June 25, 2017
+- Cleaned up CSS.
