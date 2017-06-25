@@ -37,14 +37,13 @@
 				<h2>Filters</h2>
 				<span class="tooltip">Tooltip text</span>
 			</div>
-			<input type="text" id="searchFilter" name="searchFilter" placeholder="Search Player" onkeyup="searchList('lname')">
-			<h3>Order By: <span id="orderArrow" class="toggle">&#9660;</span></h3>
+			<h3>Order By: <span id="orderArrow" class="toggle">&#9650;</span></h3>
 			<div id="orderFilter">
 				<button onclick="orderList('lname')">Last Name</button><br>
 				<button onclick="orderList('fname')">First Name</button><br>
 				<button onclick="orderList('ranking')">Overall</button>
 			</div>
-			<h3>Filter By: <span id="otherArrow" class="toggle">&#9660;</span></h3>
+			<h3>Filter By: <span id="otherArrow" class="toggle">&#9650;</span></h3>
 			<div id="otherFilter">
 				<input type="radio" id="allFilter" name="filter" value="allFilter" onchange="filterList()" checked="checked">
 				<label for="allFilter">All</label><br>
@@ -61,7 +60,7 @@
 				<input type="radio" id="goalieFilter" name="filter" value="goalieFilter" onchange="filterList()">
 				<label for="goalieFilter">Goalies</label><br>
 				<input type="radio" id="teamFilter" name="filter" value="teamFilter" onchange="initiateDropDown()">
-				<label for="goalieFilter">Team</label><br>
+				<label for="teamFilter">Team</label><br>
 			</div>
 			<div id="dropdownFilter" onchange="dropdownList()">
 				<select size="1" id="teamList" class="hidden">
@@ -75,9 +74,8 @@
 					<h2>Available Players</h2>
 					<span class="tooltip">Tooltip text</span>
 				</div>
-				<div id="timer">
-					<h2>2:00</h2>
-					<span class="tooltip">Tooltip text</span>
+				<div id="search">
+					<input type="text" id="searchFilter" name="searchFilter" placeholder="Search Player" onkeyup="searchList('ranking')">
 				</div>
 				<div onchange="selectPlayer()">
 					<select size="5" id="playerList">
@@ -156,6 +154,10 @@
 				<h2>Draft Summary</h2>
 				<span class="tooltip">Tooltip text</span>
 			</div>
+			<div id="timer">
+				<h2><span id="min">2</span>:<span id="sec">00</span></h2>
+				<span class="tooltip">Each team has <span class="important">2 minutes</span> to select a player. If you exceed this time limit, your player will be drafted <span class="important">automatically!</span></span>
+			</div>
 		</div>
 		<div id="userInfo">
 			<div id="teamBreakdown">
@@ -172,6 +174,7 @@
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 	<script src="../scripts/fbconnect.js"></script>	
 	<script src="../scripts/mainPlayerDraft.js"></script>
+	<script src="../scripts/timer.js"></script>
 	<script src="../scripts/canvas.js"></script>
 	<script src="../scripts/toggle.js"></script>
 	

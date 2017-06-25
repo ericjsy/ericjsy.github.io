@@ -18,3 +18,12 @@
 - Player Card fully responsive to the selected player.
 - Redesigned parts of the database.
 - Added new team logo assets.
+
+### v0.3.0 - June 25, 2017
+- Incorporate Goalie stats for Player Card.
+- Moved timer to the Draft Summary section.
+- Added funtionality to timer.
+- Moved search bar to the Available Players section.
+- Added functionality to the search bar.
+- Adjusted tool tip position for timer.
+- Added functionality to the Filters. 
