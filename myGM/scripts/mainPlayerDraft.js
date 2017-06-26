@@ -3,6 +3,22 @@ var players = database.ref('players/');
 
 var playerList = document.getElementById("playerList");
 
+var selectOrder = true; // Firebase does not support DESC sort; false = DESC
+
+var combos = [
+	{ filter: 'centerFilter', 	position: 'C' },
+	{ filter: 'leftwingFilter', position: 'LW' },
+	{ filter: 'rightwingFilter', position: 'RW' },
+	{ filter: 'defenseFilter', position: 'D' },
+	{ filter: 'goalieFilter', position: 'G' }
+];
+
+var teams = [
+	"ANA","ARI","BOS","BUF","CAR","CGY","CHI","CLB","COL","DAL",
+	"DET","EDM","FLA","LOS","MIN","MTL","NJ","NSH","NYI","NYR",
+	"OTT","PHI","PIT","SJ","TBL","TOR","VAN","WIN","WSH"
+];
+
 window.addEventListener("load", initializePlayerList, false);
 
 function initializePlayerList() {
@@ -21,7 +37,7 @@ function initializePlayerList() {
 	players.orderByChild('ranking').on('child_added', function(snapshot) {
 		
 		buildList(snapshot);
-		document.getElementById("loadingMessage").className = "hidden";
+		document.getElementById("loadingMessage").className = "none";
 		
 	});
 
@@ -30,17 +46,34 @@ function initializePlayerList() {
 function buildList(snapshot) {
 	//console.log("buildList called");
 	
-	var options = document.createElement("option");
-	var info = document.createTextNode(
-		snapshot.val().overall + " - " +
-		snapshot.val().lname + ", " + 
-		snapshot.val().fname + " (" + 
-		snapshot.val().position + ")"
-	);
-				
-	options.value = snapshot.key;
-	options.appendChild(info);
-	playerList.appendChild(options);
+	// Firebase does not support DESC sort; temporary solution
+	if (selectOrder) {
+		var options = document.createElement("option");
+		var info = document.createTextNode(
+			snapshot.val().overall + " - " +
+			snapshot.val().lname + ", " + 
+			snapshot.val().fname + " (" + 
+			snapshot.val().position + ")"
+		);
+					
+		options.value = snapshot.key;
+		options.appendChild(info);
+		playerList.appendChild(options);
+	
+	} else {
+		var options = document.createElement("option");		
+		var info = document.createTextNode(
+			snapshot.val().overall + " - " +
+			snapshot.val().lname + ", " + 
+			snapshot.val().fname + " (" + 
+			snapshot.val().position + ")"
+		);
+					
+		options.value = snapshot.key;	
+		options.appendChild(info);		
+		playerList.insertBefore(options, playerList.childNodes[0]);
+		
+	}
 	
 }
 
@@ -129,14 +162,6 @@ function updatePlayerCard(pValue) {
 function populateList(snapshot) {
 	//console.log("populateList called");
 	
-	var combos = [
-		{ filter: 'centerFilter', 	position: 'C' },
-		{ filter: 'leftwingFilter', position: 'LW' },
-		{ filter: 'rightwingFilter', position: 'RW' },
-		{ filter: 'defenseFilter', position: 'D' },
-		{ filter: 'goalieFilter', position: 'G' }
-	];
-	
 	if (!snapshot.val().drafted) {
 		
 		// All players
@@ -162,12 +187,6 @@ function populateList(snapshot) {
 			} 
 		}
 		
-		var teams = [
-			"ANA","ARI","BOS","BUF","CAR","CBJ","CGY","CHI","COL","DAL",
-			"DET","EDM","FLA","LOS","MIN","MTL","NJD","NSH","NYI","NYR",
-			"OTT","PHI","PIT","SJS","TBL","TOR","VAN","WIN","WSH"
-		];
-		
 		if (document.getElementById('teamFilter').checked) {
 			
 			if (document.getElementById('LGE').selected) {
@@ -192,6 +211,24 @@ function orderList(property) {
 	
 	clearList();
 	
+	selectOrder = true;
+	
+	players.orderByChild(property).on('child_added', function(snapshot) {
+		populateList(snapshot);
+	});
+
+	searchList(property);
+	
+}
+
+// Firebase does not support DESC sort; temporary solution
+function orderListReverse(property) {
+	//console.log("orderListReverse called");	
+	
+	clearList();
+	
+	selectOrder = false;
+	
 	players.orderByChild(property).on('child_added', function(snapshot) {
 		populateList(snapshot);
 	});
@@ -203,9 +240,37 @@ function orderList(property) {
 function filterList() {
 	//console.log("filterList called");
 	
-	document.getElementById('teamList').className = "hidden";
+	document.getElementById('teamList').className = "none";
 	
 	clearList();
+	
+	if (document.getElementById("goalieFilter").checked) {
+		
+		['orderOffense','orderDefense','orderPhysical'].forEach(function( id ) {
+			document.getElementById(id).className = "none";
+		});
+		
+		['orderVision','orderQuickness','orderRebound'].forEach(function( id ) {
+			document.getElementById(id).className = "";
+		});
+
+	} else if (document.getElementById("allFilter").checked) {
+		
+		['orderOffense','orderDefense','orderPhysical', 'orderOffense','orderDefense','orderPhysical'].forEach(function( id ) {
+			document.getElementById(id).className = "none";
+		});
+		
+	} else {
+		
+		['orderOffense','orderDefense','orderPhysical'].forEach(function( id ) {
+			document.getElementById(id).className = "";
+		});
+		
+		['orderVision','orderQuickness','orderRebound'].forEach(function( id ) {
+			document.getElementById(id).className = "none";
+		});
+		
+	}
 	
 	players.on('child_added', function(snapshot) {
 		populateList(snapshot);
@@ -235,5 +300,51 @@ function searchList(property) {
 		}
 		
 	});
+	
+}
+
+function initiateDropDown() {
+	//console.log("initiateDropDown called");
+	
+	clearList();
+	
+	['orderOffense','orderDefense','orderPhysical', 'orderVision','orderQuickness','orderRebound'].forEach(function( id ) {
+		document.getElementById(id).className = "none";
+	});
+	
+	var check = true;
+	
+	while (check) {
+		
+		if (teamList.length > 1) {
+			teamList.remove(1);
+		} else {
+			check = false;
+		}
+				
+	}
+	
+	players.on('child_added', function(snapshot) {
+		populateList(snapshot);
+	});
+	
+	database.ref('teams/').orderByChild('city').on('child_added', function(snapshot) {
+				
+		var options = document.createElement("option");
+		var info = document.createTextNode(
+			snapshot.val().city + " " + snapshot.val().name
+		);
+				
+		options.value = snapshot.key;
+		options.setAttribute("id", snapshot.key);
+		options.appendChild(info);	
+		teamList.appendChild(options);
+	
+	});
+	
+	document.getElementById('teamList').options[0].selected = true;
+	document.getElementById('teamList').className = "";
+
+	searchList('ranking');
 	
 }

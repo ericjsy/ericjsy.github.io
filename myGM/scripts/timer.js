@@ -4,7 +4,7 @@ var seconds = 0;
 var interval = setInterval(timer, 1000);
 
 function timer() {
-	console.log("timer called")
+	//console.log("timer called")
 	
 	if (seconds == 0) {
 		seconds = 59;
@@ -34,7 +34,7 @@ function timer() {
 }
 
 function resetTimer() {
-	console.log("resetTimer called");
+	//console.log("resetTimer called");
 	
 	minutes = 2;
 	seconds = 0;
@@ -46,7 +46,7 @@ function resetTimer() {
 }
 
 function clearTimer() {
-	console.log("clearTimer called");
+	//console.log("clearTimer called");
 
 	clearInterval(interval);
 	

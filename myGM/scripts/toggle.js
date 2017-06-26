@@ -1,8 +1,8 @@
 var order_tab_on = true;
 var other_tab_on = true;
 
-
 $(document).ready(function() {
+	
     $("#orderArrow").click(function() {
         $("#orderFilter").slideToggle("slow");
         if (order_tab_on) {
@@ -23,8 +23,5 @@ $(document).ready(function() {
             other_tab_on = true;
         }
     });
+	
 });
-
-
-
-

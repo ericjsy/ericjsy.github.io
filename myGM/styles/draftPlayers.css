@@ -37,8 +37,12 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 }
 
 /* Misc. */
-.hidden {
+.none {
 	display: none;
+}
+
+.hidden {
+	visibility: hidden;
 }
 
 .important {
@@ -223,14 +227,38 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		width: 13vw
 	}
 	
+	#forwardStats {
+		height: 10vh;
+		width: 100%;
+	}
+	
 	.toggle {
 		float: right;
 	}
 	
-	#orderFilter button, #dropdownFilter select {
+	#dropdownFilter select {
 		font-size: 1em;
 		margin: 0 1vw 5px 1vw;
 		width: 13vw;
+	}
+	
+	#orderFilter ul {
+		list-style: none;
+		margin: 0 1vw 5px 1vw;
+		padding-left: 0;
+		padding-bottom: 10px;
+	}
+	
+	#orderFilter .orderBy {
+		float: right;
+		font-size: 1em;
+	}
+	
+	#orderFilter .orderBy:hover {
+		float: right;
+		color: white;
+		font-size: 1em;
+		cursor: pointer;
 	}
 	
 	#otherFilter input {

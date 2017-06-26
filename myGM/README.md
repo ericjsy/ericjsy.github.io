@@ -35,5 +35,10 @@
 - Cleaned up CSS.
 
 ### v0.3.3 - June 25, 2017
-- Renamed assets to match new abbreviations
+- Renamed assets to match new abbreviations.
+
+### v0.4.0 - June 25, 2017
+- Firebase does not support DESC sort; temporary client-side manipulation to accodomdate this feature.
+- Modified Order By section to allow the user to select by ASC or DESC order.
+ 
  

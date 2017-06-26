@@ -37,12 +37,6 @@
 				<h2>Filters</h2>
 				<span class="tooltip">Tooltip text</span>
 			</div>
-			<h3>Order By: <span id="orderArrow" class="toggle">&#9650;</span></h3>
-			<div id="orderFilter">
-				<button onclick="orderList('lname')">Last Name</button><br>
-				<button onclick="orderList('fname')">First Name</button><br>
-				<button onclick="orderList('ranking')">Overall</button>
-			</div>
 			<h3>Filter By: <span id="otherArrow" class="toggle">&#9650;</span></h3>
 			<div id="otherFilter">
 				<input type="radio" id="allFilter" name="filter" value="allFilter" onchange="filterList()" checked="checked">
@@ -63,9 +57,66 @@
 				<label for="teamFilter">Team</label><br>
 			</div>
 			<div id="dropdownFilter" onchange="dropdownList()">
-				<select size="1" id="teamList" class="hidden">
+				<select size="1" id="teamList" class="none">
 					<option value="LGE" id="LGE">All Teams</option>
 				</select>
+			</div>
+			<h3>Order By: <span id="orderArrow" class="toggle">&#9650;</span></h3>
+			<div id="orderFilter">
+				<ul>
+					<li>Last Name
+						<div class="orderBy" onclick="orderList('lname')">desc </div>
+						<div class="orderBy" onclick="orderListReverse('lname')"> asc &nbsp; </div>
+					</li>
+				</ul>
+				<ul>
+					<li>First Name
+						<div class="orderBy" onclick="orderListReverse('fname')"> desc </div>
+						<div class="orderBy" onclick="orderList('fname')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul>
+					<li>Overall
+						<div class="orderBy" onclick="orderListReverse('overall')"> desc </div>
+						<div class="orderBy" onclick="orderList('overall')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul id="orderOffense" class="none">
+					<li>Offense
+						<div class="orderBy" onclick="orderListReverse('offense')"> desc </div>
+						<div class="orderBy" onclick="orderList('offense')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul id="orderDefense" class="none">
+					<li>Defense
+						<div class="orderBy" onclick="orderListReverse('defense')"> desc </div>
+						<div class="orderBy" onclick="orderList('defense')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul id="orderPhysical" class="none">
+					<li>Physical
+						<div class="orderBy" onclick="orderListReverse('physical')"> desc </div>
+						<div class="orderBy" onclick="orderList('physical')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul id="orderVision" class="none">
+					<li>Vision
+						<div class="orderBy" onclick="orderListReverse('vision')"> desc </div>
+						<div class="orderBy" onclick="orderList('vision')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul id="orderQuickness" class="none">
+					<li>Quickness
+						<div class="orderBy" onclick="orderListReverse('quickness')"> desc </div>
+						<div class="orderBy" onclick="orderList('quickness')">asc  &nbsp;</div>
+					</li>
+				</ul>
+				<ul id="orderRebound" class="none">
+					<li>Rebound
+						<div class="orderBy" onclick="orderListReverse('rebound')"> desc </div>
+						<div class="orderBy" onclick="orderList('rebound')">asc  &nbsp;</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div id="playerDraft">
