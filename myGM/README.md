@@ -33,3 +33,7 @@
 
 ### v0.3.2 - June 25, 2017
 - Cleaned up CSS.
+
+### v0.3.3 - June 25, 2017
+- Renamed assets to match new abbreviations
+ 
