@@ -1,6 +1,7 @@
 html, body {
 	cursor: default;
 	margin: 0;
+	overflow: hidden;
 }
 
 /* Text styling */
@@ -11,7 +12,7 @@ html, body, button, select, option, input {
 	letter-spacing: 1px;
 }
 
-header div, .title, #timer, #cardPlaceholder, #cardAdd button:hover, #searchFilter, .title .tooltip, #timer .tooltip {
+header div, .title, #timer, #cardPlaceholder, #cardAdd button:hover, #searchFilter, .title .tooltip, #timer .tooltip, #rosterSlots {
 	color: #D9D9D9;
 }
 
@@ -156,16 +157,16 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	}
 	
 	#timer .tooltip {
-		bottom: -225%;
-		margin-left: -200px;
-		width: 200px;
+		bottom: -11vh;
+		margin-left: -14.5vw;
+		width: 15vw;
 	}
 
 	.title .tooltip::after, #timer .tooltip::after {
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent #0A1612 transparent;
-		bottom: 100%;
+		bottom: 10.7vh;
 		content: "";
 		left: 50%;
 		margin-left: -5px;
@@ -177,7 +178,7 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	}
 	
 	#timer .tooltip::after {
-		margin-left: 85px;
+		margin-left: 6.1vw;
 	}
 
 	.title:hover .tooltip, #timer:hover .tooltip {
@@ -444,8 +445,39 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	
 	#draftSummary {
 		float: left;
-		height: 70vh;
+		height: 40vh;
 		width: calc(85vw/4);
+	}
+	
+	#teamSummary {
+		float: left;
+		height: 30vh;
+		width: calc(85vw/4);
+	}
+	
+	#roundSummary {
+		height: 100%;
+		overflow: auto;
+		padding-right: 50px;
+		width: 100%;
+	}
+	
+	#roundSummary ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#roundList {
+		background-color: orange;
+		padding-right: 50px;
+		height: 5vh;
+		width: 100%;
+	}
+	
+	.roundTab {
+		line-height: 3vh;
+		padding: 1vh 1vw;
 	}
 	
 	#userInfo {
@@ -484,11 +516,40 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		z-index: 1;
 	}
 	
-	#placeholder {
-		background-color: orange;
+	#rosterSlots {
 		float: left;
 		height: 25vh;
 		width: calc(85vw/4);
+	}
+	
+	#rosterSlots ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#centerTotal, #leftWingTotal, #rightWingTotal, #defenseTotal, #goalieTotal {
+		background-color: #D9D9D9;
+		border-radius: 5px;
+		display: inline-block;
+		height: 10px;
+		width: 40%;
+	}
+	
+	#centerProgress, #leftWingProgress, #rightWingProgress, #defenseProgress, #goalieProgress {
+		background-color: green;
+		border-radius: 5px;
+		height: 10px;
+		margin-bottom: -10px;
+		width: 0;
+	}
+	
+	#centerCheck, #leftWingCheck, #rightWingCheck, #defenseCheck, #goalieCheck {
+		background-color: orange;
+		border-radius: 5px;
+		height: 10px;
+		margin-bottom: -10px;
+		width: 0;
 	}
 	
 }

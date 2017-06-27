@@ -19,6 +19,15 @@ var teams = [
 	"OTT","PHI","PIT","SJ","TBL","TOR","VAN","WIN","WSH"
 ];
 
+var userTeam = [];
+var centers = 0;
+var leftwings = 0;
+var rightwings = 0;
+var defensemen = 0;
+var goalies = 0;
+
+var counter = 0;
+
 window.addEventListener("load", initializePlayerList, false);
 
 function initializePlayerList() {
@@ -100,6 +109,7 @@ function selectPlayer() {
 	var pValue = playerList.options[playerList.selectedIndex].value;
 	
 	updatePlayerCard(pValue);
+	updateProgress(pValue);
 	
 }
 
@@ -156,6 +166,206 @@ function updatePlayerCard(pValue) {
 		}
 		
 	});
+	
+}
+
+function updateProgress(pValue) {
+	
+	database.ref('players/' + pValue).once('value').then(function(snapshot) {
+	
+		var position = snapshot.val().position;
+			
+		if (centers + 1 == 5) {
+			document.getElementById("centerProgress").style.backgroundColor = "green";
+		}
+		
+		if (leftwings + 1 == 5) {
+			document.getElementById("leftWingProgress").style.backgroundColor = "green";
+		}
+		
+		if (rightwings + 1 == 5) {
+			document.getElementById("rightWingProgress").style.backgroundColor = "green";
+		}
+		
+		if (defensemen + 1 == 7) {
+			document.getElementById("defenseProgress").style.backgroundColor = "green";
+		}
+
+		if (goalies + 1 == 3) {
+			document.getElementById("goalieProgress").style.backgroundColor = "green";
+		}
+		
+		if (position == 'C') {
+		
+			if (centers == 4) {
+				document.getElementById("centerProgress").style.backgroundColor = "red";
+				
+				['leftWingCheck','rightWingCheck','defenseCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			} else {
+				document.getElementById("centerCheck").style.width = ((centers + 1) * 25) + "%";
+				
+				['leftWingCheck','rightWingCheck','defenseCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			}
+			
+		} else if (position == 'LW') {
+
+			if (leftwings == 4) {
+				document.getElementById("leftWingProgress").style.backgroundColor = "red";
+				
+				['centerCheck','rightWingCheck','defenseCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			} else {
+				document.getElementById("leftWingCheck").style.width = ((leftwings + 1) * 25) + "%";
+				
+				['centerCheck','rightWingCheck','defenseCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+			}
+			
+		} else if (position == 'RW') {
+			
+			if (rightwings == 4) {
+				document.getElementById("rightWingProgress").style.backgroundColor = "red";
+				
+				['centerCheck','leftWingCheck','defenseCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			} else {
+				document.getElementById("rightWingCheck").style.width = ((rightwings + 1) * 25) + "%";
+	
+				['centerCheck','leftWingCheck','defenseCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			}
+			
+		} else if (position == 'LD' || position == 'RD') {
+
+			if (defensemen == 6) {
+				document.getElementById("defenseProgress").style.backgroundColor = "red";
+				
+				['centerCheck','leftWingCheck','rightWingCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			} else {
+				document.getElementById("defenseCheck").style.width = ((defensemen + 1) * (100/6)) + "%";
+				
+				['centerCheck','leftWingCheck','rightWingCheck','goalieCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			}
+			
+		} else if (position == 'G') {
+
+			if (goalies == 3) {
+				document.getElementById("goalieProgress").style.backgroundColor = "red";
+				
+				['centerCheck','leftWingCheck','rightWingCheck','defenseCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			} else {
+				document.getElementById("goalieCheck").style.width = ((goalies + 1) * 50) + "%";
+				
+				['centerCheck','leftWingCheck','rightWingCheck','defenseCheck'].forEach(function(id) {
+					document.getElementById(id).style.width = 0;
+				});
+				
+			}
+			
+		}
+	
+	});
+	
+}
+
+function addPlayer() {
+	//console.log("addPlayer called");
+	
+	var pText = playerList.options[playerList.selectedIndex].text;
+	var pValue = playerList.options[playerList.selectedIndex].value;
+	
+	userTeam.push(pText);
+	teamSummary.innerHTML += userTeam[userTeam.length - 1] + "<br>";
+
+	for (var i = 0; i < playerList.length; i++) {
+		if (playerList.options[i].value == pValue) {
+			playerList.remove(i);
+		}
+	}
+	
+	database.ref('players/' + pValue).once('value').then(function(snapshot) {
+		
+		var position = snapshot.val().position;
+
+		if (position == 'C') {
+			centers++;
+			document.getElementById("countC").innerHTML = "Centers: " + centers + "/4";
+			
+			if (centers == 5) {
+				document.getElementById("centerProgress").style.backgroundColor = "red";
+			} else {
+				document.getElementById("centerProgress").style.width = (centers * 25) + "%";
+			}
+			
+		} else if (position == 'LW') {
+			leftwings++;
+			document.getElementById('countLW').innerHTML = "Left Wings: " + leftwings + "/4";
+			
+			if (leftwings == 5) {
+				document.getElementById("leftWingProgress").style.backgroundColor = "red";
+			} else {
+				document.getElementById("leftWingProgress").style.width = (leftwings * 25) + "%";
+			}
+			
+		} else if (position == 'RW') {
+			rightwings++;
+			document.getElementById('countRW').innerHTML = "Right Wings: " + rightwings + "/4";
+			
+			if (rightwings == 5) {
+				document.getElementById("rightWingProgress").style.backgroundColor = "red";
+			} else {
+				document.getElementById("rightWingProgress").style.width = (rightwings * 25) + "%";
+			}
+			
+		} else if (position == 'LD' || position == 'RD') {
+			defensemen++;
+			document.getElementById('countD').innerHTML = "Defensemen: " + defensemen + "/6";
+			
+			if (defensemen == 7) {
+				document.getElementById("defenseProgress").style.backgroundColor = "red";
+			} else {
+				document.getElementById("defenseProgress").style.width = (defensemen * (100/6)) + "%";
+			}
+			
+		} else if (position == 'G') {
+			goalies++;
+			document.getElementById('countG').innerHTML = "Goalies: " + goalies + "/2";
+			
+			if (goalies == 3) {
+				document.getElementById("goalieProgress").style.backgroundColor = "red";
+			} else {
+				document.getElementById("goalieProgress").style.width = (goalies * 50) + "%";
+			}
+			
+		}
+		
+	});
+	
+	database.ref('players/' + pValue + '/drafted/').set(true);
+	counter++;
+	//compDraft();
 	
 }
 
@@ -243,6 +453,7 @@ function filterList() {
 	document.getElementById('teamList').className = "none";
 	
 	clearList();
+	orderList('overall');
 	
 	if (document.getElementById("goalieFilter").checked) {
 		
@@ -345,6 +556,19 @@ function initiateDropDown() {
 	document.getElementById('teamList').options[0].selected = true;
 	document.getElementById('teamList').className = "";
 
+	searchList('ranking');
+	
+}
+
+function dropdownList() {
+	//console.log("dropdownList called");
+	
+	clearList();
+	
+	players.on('child_added', function(snapshot) {
+		populateList(snapshot);
+	});
+	
 	searchList('ranking');
 	
 }

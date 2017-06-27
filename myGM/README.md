@@ -40,5 +40,9 @@
 ### v0.4.0 - June 25, 2017
 - Firebase does not support DESC sort; temporary client-side manipulation to accodomdate this feature.
 - Modified Order By section to allow the user to select by ASC or DESC order.
- 
- 
+
+### v0.5.0 - June 26, 2017
+- Added functionality to the drop down filter.
+- Bug fix: changed default ordering from ASC to DESC.
+- Added functionality to the Add Player button.
+- Added functionality to the progress bars of the Roster Slots section.

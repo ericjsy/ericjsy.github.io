@@ -129,7 +129,7 @@
 					<input type="text" id="searchFilter" name="searchFilter" placeholder="Search Player" onkeyup="searchList('ranking')">
 				</div>
 				<div onchange="selectPlayer()">
-					<select size="5" id="playerList">
+					<select size="10" id="playerList">
 						<option id="loadingMessage">Loading list . . .</option>
 					</select>
 				</div>
@@ -209,6 +209,49 @@
 				<h2><span id="min">2</span>:<span id="sec">00</span></h2>
 				<span class="tooltip">Each team has <span class="important">2 minutes</span> to select a player. If you exceed this time limit, your player will be drafted <span class="important">automatically!</span></span>
 			</div>
+			<div id="roundSummary">
+			<div id="roundList">
+				<div class="roundTab">Round 1</div>
+			</div>
+				<ul>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+					<li>TEST</li>
+				</ul>
+			</div>
+		</div>
+		<div id="teamSummary">
+			<div class="title">
+				<h2>Team Summary</h2>
+				<span class="tooltip">Tooltip text</span>
+			</div>
 		</div>
 		<div id="userInfo">
 			<div id="teamBreakdown">
@@ -217,7 +260,44 @@
 				<canvas id="layer1">Your browser does not support the HTML5 canvas tag.</canvas>
 				<canvas id="layer2"></canvas>
 			</div>
-			<div id="placeholder">
+			<div id="rosterSlots">
+				<ul>
+					<li>
+						<span id="countC">Centers: 0/4</span>
+						<div id="centerTotal">
+							<div id="centerCheck"></div>
+							<div id="centerProgress"></div>
+						</div>
+					</li>
+					<li>
+						<span id="countLW">Left Wings: 0/4</span>
+						<div id="leftWingTotal">
+							<div id="leftWingCheck"></div>
+							<div id="leftWingProgress"></div>
+						</div>
+					</li>
+					<li>
+						<span id="countRW">Right Wings: 0/4</span>
+						<div id="rightWingTotal">
+							<div id="rightWingCheck"></div>
+							<div id="rightWingProgress"></div>
+						</div>
+					</li>
+					<li>
+						<span id="countD">Defensemen: 0/6</span>
+						<div id="defenseTotal">
+							<div id="defenseCheck"></div>
+							<div id="defenseProgress"></div>
+						</div>
+					</li>
+					<li>
+						<span id="countG">Goalies: 0/2</span>
+						<div id="goalieTotal">
+							<div id="goalieCheck"></div>
+							<div id="goalieProgress"></div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</main>
