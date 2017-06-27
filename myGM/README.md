@@ -54,4 +54,10 @@
 - Deprecated toggle feature for filter list.
 
 ### v0.5.3 - June 26, 2017
-- Drop down list in Filters to include active active teams only.
+- Drop down list in Filters to include active teams only.
+
+### v0.5.4 - June 26, 2017
+- Bug Fix: Last Name order by was reversed.
+- Bug Fix: filtering by active teams broke the drop down filter. Fixed.
+- Cleaned up scripts.
+- Dropdown now static, but set to disabled unless team is selected.

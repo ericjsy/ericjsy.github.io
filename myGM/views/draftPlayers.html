@@ -57,7 +57,7 @@
 				<label for="teamFilter">Team</label><br>
 			</div>
 			<div id="dropdownFilter" onchange="dropdownList()">
-				<select size="1" id="teamList" class="none">
+				<select size="1" id="teamList" class="disabled" disabled>
 					<option value="LGE" id="LGE">All Teams</option>
 				</select>
 			</div>
@@ -65,8 +65,8 @@
 			<div id="orderFilter">
 				<ul>
 					<li>Last Name
-						<div class="orderBy" onclick="orderList('lname')">desc </div>
-						<div class="orderBy" onclick="orderListReverse('lname')"> asc &nbsp; </div>
+						<div class="orderBy" onclick="orderListReverse('lname')">desc </div>
+						<div class="orderBy" onclick="orderList('lname')"> asc &nbsp; </div>
 					</li>
 				</ul>
 				<ul>

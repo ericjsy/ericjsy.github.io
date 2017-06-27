@@ -12,11 +12,11 @@ html, body, button, select, option, input {
 	letter-spacing: 1px;
 }
 
-header div, .title, #timer, #cardPlaceholder, #cardAdd button:hover, #searchFilter, .title .tooltip, #timer .tooltip, #rosterSlots {
+header div, .title, #timer, #cardPlaceholder, #dropdownFilter select, #cardAdd button:hover, #searchFilter, .title .tooltip, #timer .tooltip, #rosterSlots {
 	color: #D9D9D9;
 }
 
-#help, #filterList h3, #orderFilter button, #dropdownFilter select, #otherFilter label, #cardAdd button {
+#help, #filterList h3, #orderFilter button, #otherFilter label, #cardAdd button {
 	color: #0A1612; 
 }
 
@@ -305,7 +305,7 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	
 	#orderFilter ul {
 		list-style: none;
-		margin: 0 1vw 5px 1vw;
+		margin: 0 1vw 0 1vw;
 		padding-left: 0;
 		padding-bottom: 10px;
 	}
