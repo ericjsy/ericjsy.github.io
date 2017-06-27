@@ -540,16 +540,20 @@ function initiateDropDown() {
 	});
 	
 	database.ref('teams/').orderByChild('city').on('child_added', function(snapshot) {
-				
-		var options = document.createElement("option");
-		var info = document.createTextNode(
-			snapshot.val().city + " " + snapshot.val().name
-		);
-				
-		options.value = snapshot.key;
-		options.setAttribute("id", snapshot.key);
-		options.appendChild(info);	
-		teamList.appendChild(options);
+		
+		if (snapshot.val().active) {
+		
+			var options = document.createElement("option");
+			var info = document.createTextNode(
+				snapshot.val().city + " " + snapshot.val().name
+			);
+					
+			options.value = snapshot.key;
+			options.setAttribute("id", snapshot.key);
+			options.appendChild(info);	
+			teamList.appendChild(options);
+		
+		}
 	
 	});
 	

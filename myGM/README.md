@@ -52,3 +52,6 @@
 
 ### v0.5.2 - June 26, 2017
 - Deprecated toggle feature for filter list.
+
+### v0.5.3 - June 26, 2017
+- Drop down list in Filters to include active active teams only.

@@ -1,0 +1,269 @@
+{
+  "players" : [ {
+    "defense" : 75,
+    "drafted" : false,
+    "fname" : "Morgan",
+    "lname" : "Poirier",
+    "nationality" : "Canada",
+    "offense" : 78,
+    "overall" : 77,
+    "physical" : 78,
+    "position" : "RW",
+    "ranking" : 1,
+    "team" : "EDM",
+    "type" : "SNP"
+  }, {
+    "defense" : 75,
+    "drafted" : false,
+    "fname" : "Mason",
+    "lname" : "Knight",
+    "nationality" : "Canada",
+    "offense" : 76,
+    "overall" : 77,
+    "physical" : 79,
+    "position" : "LW",
+    "ranking" : 2,
+    "team" : "BOS",
+    "type" : "TWF"
+  }, {
+    "defense" : 79,
+    "drafted" : false,
+    "fname" : "Arvid",
+    "lname" : "Berggren",
+    "nationality" : "Sweden",
+    "offense" : 75,
+    "overall" : 76,
+    "physical" : 75,
+    "position" : "C",
+    "ranking" : 3,
+    "team" : "VAN",
+    "type" : "PLY"
+  }, {
+    "defense" : 75,
+    "drafted" : false,
+    "fname" : "Cyrus",
+    "lname" : "Rantanen",
+    "nationality" : "Finland",
+    "offense" : 73,
+    "overall" : 75,
+    "physical" : 76,
+    "position" : "LD",
+    "ranking" : 4,
+    "team" : "CHI",
+    "type" : "TWD"
+  }, {
+    "drafted" : false,
+    "fname" : "Milo",
+    "lname" : "Dumont",
+    "nationality" : "Canada",
+    "overall" : 75,
+    "position" : "G",
+    "quickness" : 71,
+    "ranking" : 5,
+    "rebound" : 75,
+    "team" : "OTT",
+    "type" : "HYB",
+    "vision" : 79
+  }, {
+    "defense" : 79,
+    "drafted" : false,
+    "fname" : "Jake",
+    "lname" : "Perry",
+    "nationality" : "Canada",
+    "offense" : 80,
+    "overall" : 75,
+    "physical" : 66,
+    "position" : "RD",
+    "ranking" : 6,
+    "team" : "LOS",
+    "type" : "OFD"
+  } ],
+  "teams" : {
+    "ANA" : {
+      "active" : false,
+      "city" : "Anaheim",
+      "name" : "Drakes"
+    },
+    "ARI" : {
+      "active" : false,
+      "city" : "Arizona",
+      "name" : "Rattlesnakes"
+    },
+    "BOS" : {
+      "active" : true,
+      "city" : "Boston",
+      "colors" : {
+        "accent" : "#FBB040",
+        "contrast" : "#3C2415",
+        "primary" : "#C49A6C",
+        "secondary" : "#A57F59"
+      },
+      "name" : "Brown Bears"
+    },
+    "BUF" : {
+      "active" : false,
+      "city" : "Buffalo",
+      "name" : "Bison"
+    },
+    "CAR" : {
+      "active" : false,
+      "city" : "Carolina",
+      "name" : "Hornets"
+    },
+    "CGY" : {
+      "active" : false,
+      "city" : "Calgary",
+      "name" : "Stallions"
+    },
+    "CHI" : {
+      "active" : true,
+      "city" : "Chicago",
+      "colors" : {
+        "accent" : "#BD2025",
+        "contrast" : "#000000",
+        "primary" : "#F8F6BD",
+        "secondary" : "#D49E60"
+      },
+      "name" : "Chieftains"
+    },
+    "CLB" : {
+      "active" : false,
+      "city" : "Columbus",
+      "name" : "Blue Coats"
+    },
+    "COL" : {
+      "active" : false,
+      "city" : "Colorado",
+      "name" : "Broncos"
+    },
+    "DAL" : {
+      "active" : false,
+      "city" : "Dallas",
+      "name" : "Texans"
+    },
+    "DET" : {
+      "active" : false,
+      "city" : "Detroit",
+      "name" : "PLACEHOLDER"
+    },
+    "EDM" : {
+      "active" : true,
+      "city" : "Edmonton",
+      "colors" : {
+        "accent" : "#FDBA29",
+        "contrast" : "#D6D6D6",
+        "primary" : "#0D2531",
+        "secondary" : "#5B998A"
+      },
+      "name" : "Owls"
+    },
+    "FLA" : {
+      "active" : false,
+      "city" : "Florida",
+      "name" : "Crocs"
+    },
+    "LOS" : {
+      "active" : true,
+      "city" : "Los Angeles",
+      "colors" : {
+        "accent" : "#BE1E2D",
+        "contrast" : "#0E1E41",
+        "primary" : "#BCBEC0",
+        "secondary" : "#848687"
+      },
+      "name" : "Knights"
+    },
+    "MIN" : {
+      "active" : false,
+      "city" : "Minnesota",
+      "name" : "Sea Farers"
+    },
+    "MTL" : {
+      "active" : false,
+      "city" : "Montreal",
+      "name" : "PLACEHOLDER"
+    },
+    "NJ" : {
+      "active" : false,
+      "city" : "New Jersey",
+      "name" : "Red Horns"
+    },
+    "NSH" : {
+      "active" : false,
+      "city" : "Nashville",
+      "name" : "Titans"
+    },
+    "NYI" : {
+      "active" : false,
+      "city" : "New York",
+      "name" : "Islanders"
+    },
+    "NYR" : {
+      "active" : false,
+      "city" : "New York",
+      "name" : "Rangers"
+    },
+    "OTT" : {
+      "active" : true,
+      "city" : "Ottawa",
+      "colors" : {
+        "accent" : "#CBA92D",
+        "contrast" : "#202827",
+        "primary" : "#ED1C24",
+        "secondary" : "#B5171E"
+      },
+      "name" : "Spartans"
+    },
+    "PHI" : {
+      "active" : false,
+      "city" : "Philidelphia",
+      "name" : "PLACEHOLDER"
+    },
+    "PIT" : {
+      "active" : false,
+      "city" : "Pittsburgh",
+      "name" : "Colonials"
+    },
+    "SJ" : {
+      "active" : false,
+      "city" : "San Jose",
+      "name" : "Great Whites"
+    },
+    "STL" : {
+      "active" : false,
+      "city" : "St. Louis",
+      "name" : "Bighorns"
+    },
+    "TBL" : {
+      "active" : false,
+      "city" : "Tampa Bay",
+      "name" : "PLACEHOLDER"
+    },
+    "TOR" : {
+      "active" : false,
+      "city" : "Toronto",
+      "name" : "PLACEHOLDER"
+    },
+    "VAN" : {
+      "active" : true,
+      "city" : "Vancouver",
+      "colors" : {
+        "accent" : "#FCD701",
+        "contrast" : "#051716",
+        "primary" : "#00ACDE",
+        "secondary" : "#98D9EC"
+      },
+      "name" : "Thunderbirds"
+    },
+    "WIN" : {
+      "active" : false,
+      "city" : "Winnipeg",
+      "name" : "Huskies"
+    },
+    "WSH" : {
+      "active" : false,
+      "city" : "Washington",
+      "name" : "Badgers"
+    }
+  }
+}
