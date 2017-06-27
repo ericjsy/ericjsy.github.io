@@ -46,3 +46,6 @@
 - Bug fix: changed default ordering from ASC to DESC.
 - Added functionality to the Add Player button.
 - Added functionality to the progress bars of the Roster Slots section.
+
+### v0.5.1 - June 26, 2017
+- Added content to all the tooltips and repositioned boxes.

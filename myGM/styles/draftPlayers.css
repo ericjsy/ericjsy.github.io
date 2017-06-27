@@ -151,9 +151,39 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	}
 	
 	.title .tooltip {
-		bottom: -150%;
-		margin-left: -60px;
-		width: 120px;
+		bottom: -11vh;
+		margin-left: -14.5vw;
+		width: 15vw;
+	}
+	
+	#filterList .title .tooltip {
+		bottom: -11vh;
+		margin-left: -7vw;
+		width: 17vw;
+	}
+	
+	#availablePlayers .title .tooltip {
+		bottom: -11vh;
+		margin-left: -12.4vw;
+		width: 17vw;
+	}
+
+	#playerQueue .title .tooltip {
+		bottom: -11vh;
+		margin-left: -21vw;
+		width: 17vw;
+	}
+	
+	#playerCard .title .tooltip {
+		bottom: -11vh;
+		margin-left: -10vw;
+		width: 17vw;
+	}
+	
+	#draftSummary .title .tooltip {
+		bottom: -11vh;
+		margin-left: -7vw;
+		width: 17vw;
 	}
 	
 	#timer .tooltip {
@@ -162,6 +192,12 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		width: 15vw;
 	}
 
+	#teamSummary .title .tooltip {
+		bottom: -11vh;
+		margin-left: -10vw;
+		width: 17vw;
+	}
+	
 	.title .tooltip::after, #timer .tooltip::after {
 		border-width: 5px;
 		border-style: solid;
@@ -174,13 +210,37 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	}
 	
 	.title .tooltip::after {
-		margin-left: -5px;
+		margin-left: 6.1vw;
 	}
+	
+	#filterList .title .tooltip::after {
+		margin-left: -7.4vw;
+	}
+	
+	#availablePlayers .title .tooltip::after {
+		margin-left: -6vw;
+	}
+	
+	#playerQueue .title .tooltip::after {
+		margin-left: -7.5vw;		
+	}
+	
+	#playerCard .title .tooltip::after {
+		margin-left: -5.7vw;		
+	}
+	
+	#draftSummary .title .tooltip::after {
+		margin-left: -6vw;
+	}	
 	
 	#timer .tooltip::after {
 		margin-left: 6.1vw;
 	}
 
+	#teamSummary .title .tooltip::after {
+			margin-left: -6.7vw;	
+	}
+	
 	.title:hover .tooltip, #timer:hover .tooltip {
 		opacity: 1;
 		visibility: visible;
