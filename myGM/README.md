@@ -66,3 +66,6 @@
 - Implemented first iteration of computer drafting system.
 - Draft Summary is populated with information for each draft.
 - Drop down menu added to Draft Summary to filter by round.
+
+### v0.6.1 - June 29, 2017
+- Tooltip arrow adjustments.
