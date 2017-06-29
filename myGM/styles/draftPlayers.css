@@ -184,7 +184,7 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent #0A1612 transparent;
-		bottom: 10.7vh;
+		top: -19%;
 		content: "";
 		left: 50%;
 		margin-left: -5px;
