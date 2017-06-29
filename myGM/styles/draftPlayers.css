@@ -146,56 +146,38 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		left: 50%;
 		opacity: 0;
 		text-align: center;
+		top: 110%;
 		visibility: hidden;
+		width: 17vw;
 		z-index: 1;
 	}
 	
-	.title .tooltip {
-		bottom: -11vh;
-		margin-left: -14.5vw;
-		width: 15vw;
-	}
-	
 	#filterList .title .tooltip {
-		bottom: -11vh;
 		margin-left: -7vw;
-		width: 17vw;
 	}
 	
 	#availablePlayers .title .tooltip {
-		bottom: -11vh;
 		margin-left: -12.4vw;
-		width: 17vw;
 	}
 
 	#playerQueue .title .tooltip {
-		bottom: -11vh;
 		margin-left: -21vw;
-		width: 17vw;
 	}
 	
 	#playerCard .title .tooltip {
-		bottom: -11vh;
 		margin-left: -10vw;
-		width: 17vw;
 	}
 	
 	#draftSummary .title .tooltip {
-		bottom: -11vh;
 		margin-left: -7vw;
-		width: 17vw;
 	}
 	
 	#timer .tooltip {
-		bottom: -11vh;
-		margin-left: -14.5vw;
-		width: 15vw;
+		margin-left: -15.5vw;
 	}
 
 	#teamSummary .title .tooltip {
-		bottom: -11vh;
 		margin-left: -10vw;
-		width: 17vw;
 	}
 	
 	.title .tooltip::after, #timer .tooltip::after {
@@ -528,16 +510,11 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		padding: 0;
 	}
 	
-	#roundList {
+	#roundNumbers {
 		background-color: orange;
 		padding-right: 50px;
 		height: 5vh;
 		width: 100%;
-	}
-	
-	.roundTab {
-		line-height: 3vh;
-		padding: 1vh 1vw;
 	}
 	
 	#userInfo {

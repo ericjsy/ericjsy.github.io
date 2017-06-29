@@ -61,3 +61,8 @@
 - Bug Fix: filtering by active teams broke the drop down filter. Fixed.
 - Cleaned up scripts.
 - Dropdown now static, but set to disabled unless team is selected.
+
+### v0.6.0 - June 28, 2017
+- Implemented first iteration of computer drafting system.
+- Draft Summary is populated with information for each draft.
+- Drop down menu added to Draft Summary to filter by round.

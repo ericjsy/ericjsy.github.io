@@ -1,5 +1,4 @@
 var database = firebase.database();
-var players = database.ref('players/');
 
 var playerList = document.getElementById("playerList");
 
@@ -14,8 +13,8 @@ var combos = [
 ];
 
 var teams = [];
+var leagueTeams = [];
 
-var userTeam = [];
 var centers = 0;
 var leftwings = 0;
 var rightwings = 0;
@@ -23,13 +22,15 @@ var defensemen = 0;
 var goalies = 0;
 
 var counter = 0;
+var draftOverall = 1;
+var round = 1;
 
-window.addEventListener("load", initializePlayerList, false);
+window.addEventListener("load", initApp, false);
 
-function initializePlayerList() {
+function initApp() {
 	
 	// Reset all draft status to false
-	players.once('value').then(function(snapshot) {
+	database.ref('players/').once('value').then(function(snapshot) {
 		var s = snapshot.numChildren();
 			
 		for (var i = 0; i < s; i++) {
@@ -39,13 +40,25 @@ function initializePlayerList() {
 	});
 	
 	// Set up initial playerList
-	players.orderByChild('ranking').on('child_added', function(snapshot) {
+	database.ref('players/').orderByChild('ranking').on('child_added', function(snapshot) {
 		
 		buildList(snapshot);
 		document.getElementById("loadingMessage").className = "none";
 		
 	});
+	
+	// Set up computer teams
+	database.ref('teams/').orderByChild('city').on('child_added', function(snapshot) {
+		
+		if (snapshot.val().active) {
+			leagueTeams.push(snapshot.key)
+			leagueTeams[leagueTeams.length - 1] = [];
+		}
+	
+	});
 
+	console.log(leagueTeams);
+	
 }
 
 function buildList(snapshot) {
@@ -281,8 +294,8 @@ function addPlayer() {
 	var pText = playerList.options[playerList.selectedIndex].text;
 	var pValue = playerList.options[playerList.selectedIndex].value;
 	
-	userTeam.push(pText);
-	teamSummary.innerHTML += userTeam[userTeam.length - 1] + "<br>";
+	leagueTeams[0].push(draftOverall + " - " + pText);
+	teamSummary.innerHTML += leagueTeams[0][leagueTeams[0].length - 1] + "<br>";
 
 	for (var i = 0; i < playerList.length; i++) {
 		if (playerList.options[i].value == pValue) {
@@ -348,10 +361,93 @@ function addPlayer() {
 		
 	});
 	
+	updateRoundList(pText);
+	
 	database.ref('players/' + pValue + '/drafted/').set(true);
 	counter++;
-	//compDraft();
 	
+	compDraft();
+	
+}
+
+function updateRoundList(string) {
+
+	var stringStart = string.indexOf("-");
+	var stringEnd = string.indexOf(")");
+
+	var lists = document.createElement("li");
+	var info = document.createTextNode((counter + 1) + "(" + draftOverall + ") - " + string.substring(stringStart + 2, stringEnd + 1));
+	
+	if (counter == 0) {
+		lists.setAttribute("class", "important");
+	}
+	
+	lists.setAttribute("value",round);
+	
+	lists.appendChild(info);
+	roundList.appendChild(lists);
+	draftOverall++;
+	
+	if (counter == leagueTeams.length - 1) {
+		round++;
+		
+		var rounds = document.createElement("option");
+		var info = document.createTextNode("Round " + round);
+		
+		rounds.setAttribute("value",round);
+		
+		rounds.appendChild(info);
+		roundTab.appendChild(rounds);
+	}
+}
+
+function displayRound() {
+	
+	var roundList = document.getElementById("roundList");
+	var rValue = roundTab.options[roundTab.selectedIndex].value;
+	
+	for (var i = 0; i < roundList.childElementCount; i++) {
+		
+		if (roundList.getElementsByTagName("li")[i].value != rValue) {
+			roundList.getElementsByTagName("li")[i].classList.add("none");
+		} else {
+			roundList.getElementsByTagName("li")[i].classList.remove("none");
+		}
+		
+	}
+	
+}
+
+function compDraft() {
+	//console.log("compDraft called");
+	
+	var rand = Math.floor(Math.random() * (playerList.length / 2));
+	//console.log("random number: " + rand);
+	
+	orderList('ranking');
+	
+	var cText = playerList.options[rand].text;
+	var cValue = playerList.options[rand].value;
+	
+	updateRoundList(cText);
+	
+	leagueTeams[counter].push(cText);
+
+	for (var i = 0; i < playerList.length; i++) {
+		if (playerList.options[i].value == cValue) {
+			playerList.remove(i);
+		}
+	}
+	
+	database.ref('players/' + cValue + '/drafted/').set(true);
+	
+	//Temporary Logic - loops all computers before player re-drafts
+	if (counter < leagueTeams.length - 1) {
+		counter++;
+		compDraft();
+	} else {
+		counter = 0;
+	}
 }
 
 function populateList(snapshot) {
@@ -408,7 +504,7 @@ function orderList(property) {
 	
 	selectOrder = true;
 	
-	players.orderByChild(property).on('child_added', function(snapshot) {
+	database.ref('players/').orderByChild(property).on('child_added', function(snapshot) {
 		populateList(snapshot);
 	});
 
@@ -424,7 +520,7 @@ function orderListReverse(property) {
 	
 	selectOrder = false;
 	
-	players.orderByChild(property).on('child_added', function(snapshot) {
+	database.ref('players/').orderByChild(property).on('child_added', function(snapshot) {
 		populateList(snapshot);
 	});
 
@@ -473,7 +569,7 @@ function filterList() {
 		
 	}
 	
-	players.on('child_added', function(snapshot) {
+	database.ref('players/').on('child_added', function(snapshot) {
 		populateList(snapshot);
 	});
 	
@@ -489,7 +585,7 @@ function searchList(property) {
 	
 	clearList();
 	
-	players.orderByChild(property).on('child_added', function(snapshot) {
+	database.ref('players/').orderByChild(property).on('child_added', function(snapshot) {
 		
 		var first = snapshot.val().fname;
 		var last = snapshot.val().lname;
@@ -525,7 +621,7 @@ function initiateDropDown() {
 				
 	}
 	
-	players.on('child_added', function(snapshot) {
+	database.ref('players/').on('child_added', function(snapshot) {
 		populateList(snapshot);
 	});
 	
@@ -561,7 +657,7 @@ function dropdownList() {
 	
 	clearList();
 	
-	players.on('child_added', function(snapshot) {
+	database.ref('players/').on('child_added', function(snapshot) {
 		populateList(snapshot);
 	});
 	
