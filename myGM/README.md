@@ -77,4 +77,8 @@
 - Optimized canvas drawings into loops.
 
 ### v0.7.2 - June 29, 2017
-- Cleaned up canvas some more.
+- Cleaned up canvas.
+- Bug Fix: first draft should read as 0 after selecting a player. Fixed.
+
+### v0.7.3 - June 30, 2017
+- Cleaned up canvas.

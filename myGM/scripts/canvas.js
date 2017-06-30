@@ -1,48 +1,75 @@
-var offCanvas = document.getElementById('offCanvas');
-var defCanvas = document.getElementById('defCanvas');
-var phyCanvas = document.getElementById('phyCanvas');
-var offCTX = offCanvas.getContext("2d");
-var defCTX = defCanvas.getContext("2d");
-var phyCTX = phyCanvas.getContext("2d");
-
-var canvas = [document.getElementById('offCanvas'), document.getElementById('defCanvas'), document.getElementById('phyCanvas')]
-var ctx = [offCanvas.getContext("2d"), defCanvas.getContext("2d"), phyCanvas.getContext("2d")];
+var canvas = [
+		document.getElementById('offCanvas'), 
+		document.getElementById('defCanvas'), 
+		document.getElementById('phyCanvas')
+	];
+	
+var ctx = [
+		offCanvas.getContext("2d"), 
+		defCanvas.getContext("2d"), 
+		phyCanvas.getContext("2d")
+	];
 
 var x = 70;
 var y = 50;
 var radius = 45;
 var startAngle = 1.5 * Math.PI;
-var counterClockwise = false;
 
+// onload function to build placeholders 
 function initCircle() {
 	
 	for (var i = 0; i < canvas.length; i++) {
 		
-		ctx[i].beginPath();
-		ctx[i].arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-		ctx[i].lineWidth = 5;
-		ctx[i].strokeStyle = 'red';
-		ctx[i].stroke();
-		
-		ctx[i].fillStyle = 'red';
-		ctx[i].beginPath();
-		ctx[i].font = "20px Lato";
-		ctx[i].textAlign="center"; 
-		ctx[i].fillText("WEAK",70,130);
-		ctx[i].fillText(0, 70, 50);
-		ctx[i].stroke();
-		ctx[i].closePath();
+		generateBG(i, 'red');
+		generateText(i, 'WEAK', 0, 'red');
 	
 	}
 
 }
 
+// background circle
+function generateBG(stat, color) {
+		
+	ctx[stat].beginPath();
+	ctx[stat].arc(x, y, radius, startAngle, 1.4999 * Math.PI, false);
+	ctx[stat].lineWidth = 5;
+	ctx[stat].strokeStyle = color;
+	ctx[stat].stroke();
+	
+}
+
+// foreground circle
+function generateFG(stat, endAngle, color) {
+	
+	ctx[stat].beginPath();
+	ctx[stat].arc(x, y, radius, startAngle, endAngle, false);
+	ctx[stat].lineWidth = 7;
+	ctx[stat].strokeStyle = color;
+	ctx[stat].stroke();
+	
+}
+
+// print the new center value and the amount it was changed
+function generateText(stat, message, value, color) {
+	
+	ctx[stat].fillStyle = color;
+	ctx[stat].beginPath();
+	ctx[stat].font = "20px Lato";
+	ctx[stat].textAlign="center"; 
+	ctx[stat].fillText(message, 70, 130);
+	ctx[stat].fillText(value, 70, 50);
+	ctx[stat].stroke();
+	ctx[stat].closePath();
+	
+}
+
+// dynamic manipulation of stat circles
 function drawCircles(off, off2, def, def2, phy, phy2) {
 	var endAngleOFF =  1.5 * Math.PI - (0.062831853071792 * (100 - off));
 	var endAngleDEF =  1.5 * Math.PI - (0.062831853071792 * (100 - def));
 	var endAnglePHY =  1.5 * Math.PI - (0.062831853071792 * (100 - phy));
-
 	var endAngle = [endAngleOFF, endAngleDEF, endAnglePHY];
+	
 	var stats = [off, def, phy];
 	var stats2 = [off2, def2, phy2];
 	
@@ -52,20 +79,11 @@ function drawCircles(off, off2, def, def2, phy, phy2) {
 		ctx[i].font = "20px Lato";
 		ctx[i].textAlign="center";
 		
-		ctx[i].beginPath();
-		ctx[i].arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-		ctx[i].lineWidth = 5;
-		ctx[i].strokeStyle = 'gray';
-		ctx[i].stroke();
-		
-		ctx[i].beginPath();
-		ctx[i].arc(x, y, radius, startAngle, endAngle[i], counterClockwise);
-		ctx[i].lineWidth = 7;
+		generateBG(i, 'gray');
 		
 		if (stats[i] > 70) {
 			
-			ctx[i].strokeStyle = 'green';
-			ctx[i].stroke();
+			generateFG(i, endAngle[i], 'green');
 			
 			ctx[i].fillStyle = 'green';
 			ctx[i].beginPath(); 
@@ -83,8 +101,7 @@ function drawCircles(off, off2, def, def2, phy, phy2) {
 			
 		} else if (stats[i] > 60) {
 			
-			ctx[i].strokeStyle = 'orange';
-			ctx[i].stroke();
+			generateFG(i, endAngle[i], 'orange');
 			
 			ctx[i].fillStyle = 'orange';
 			ctx[i].beginPath();
@@ -102,8 +119,7 @@ function drawCircles(off, off2, def, def2, phy, phy2) {
 			
 		} else {
 			
-			ctx[i].strokeStyle = 'red';
-			ctx[i].stroke();
+			generateFG(i, endAngle[i], 'red');
 			
 			ctx[i].fillStyle = 'red';
 			ctx[i].beginPath();

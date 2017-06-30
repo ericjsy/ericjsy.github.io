@@ -142,9 +142,6 @@ function selectPlayer() {
 		var percentDefense = Math.round(tempDefense / (leagueTeams[0].length));
 		var percentPhysical = Math.round(tempPhysical / (leagueTeams[0].length));		
 		
-		console.log(percentOffense);
-		console.log(originalOffense);
-		
 		drawCircles(percentOffense, originalOffense, percentDefense, originalDefense, percentPhysical, originalPhysical);
 		
 	});
