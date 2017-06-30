@@ -74,4 +74,4 @@
 - Implemented dynamic team stat changes with respect to selected player.
 
 ### v0.7.1 - June 29, 2017
-- Optimized canvas drawings into a loop.
+- Optimized canvas drawings into loops.
