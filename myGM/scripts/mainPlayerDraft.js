@@ -130,9 +130,9 @@ function selectPlayer() {
 			var phy = 0;		
 		}
 	
-		var originalOffense = totalOffense / (leagueTeams[0].length - 1);
-		var originalDefense = totalDefense / (leagueTeams[0].length - 1);
-		var originalPhysical = totalPhysical / (leagueTeams[0].length - 1);
+		var originalOffense = Math.round(totalOffense / (leagueTeams[0].length - 1));
+		var originalDefense = Math.round(totalDefense / (leagueTeams[0].length - 1));
+		var originalPhysical = Math.round(totalPhysical / (leagueTeams[0].length - 1));
 
 		tempOffense = totalOffense + off;
 		tempDefense = totalDefense + def;
@@ -141,6 +141,9 @@ function selectPlayer() {
 		var percentOffense = Math.round(tempOffense / (leagueTeams[0].length));
 		var percentDefense = Math.round(tempDefense / (leagueTeams[0].length));
 		var percentPhysical = Math.round(tempPhysical / (leagueTeams[0].length));		
+		
+		console.log(percentOffense);
+		console.log(originalOffense);
 		
 		drawCircles(percentOffense, originalOffense, percentDefense, originalDefense, percentPhysical, originalPhysical);
 		

@@ -75,3 +75,6 @@
 
 ### v0.7.1 - June 29, 2017
 - Optimized canvas drawings into loops.
+
+### v0.7.2 - June 29, 2017
+- Cleaned up canvas some more.
