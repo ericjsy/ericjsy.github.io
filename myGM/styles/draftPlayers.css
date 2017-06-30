@@ -181,7 +181,7 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	}
 	
 	.title .tooltip::after, #timer .tooltip::after {
-		border-width: 5px;
+		border-width: 10px;
 		border-style: solid;
 		border-color: transparent transparent #0A1612 transparent;
 		top: -19%;
@@ -528,6 +528,27 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 		float: left;
 		height: 25vh;
 		width: 57.5vw;
+	}
+	
+	#teamBreakdown div {
+		height: 25vh;
+		width: calc(85vw/2/3);
+		float: left;
+		position: relative;
+	}
+	
+	#teamBreakdown #placeholder {
+		background-color: orange;
+		height: 25vh;
+		width: 15vw;
+		float: left;
+	}
+	
+	#teamBreakdown canvas {
+		left: 50%;
+		top: 5%;
+		position: absolute;
+		transform: translateX(-50%);
 	}
 	
 	#canvas {

@@ -69,3 +69,6 @@
 
 ### v0.6.1 - June 29, 2017
 - Tooltip arrow adjustments.
+
+### v0.7.0 - June 29, 2017
+- Implemented dynamic team stat changes in response to selected player.
