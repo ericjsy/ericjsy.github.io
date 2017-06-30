@@ -5,6 +5,9 @@ var offCTX = offCanvas.getContext("2d");
 var defCTX = defCanvas.getContext("2d");
 var phyCTX = phyCanvas.getContext("2d");
 
+var canvas = [document.getElementById('offCanvas'), document.getElementById('defCanvas'), document.getElementById('phyCanvas')]
+var ctx = [offCanvas.getContext("2d"), defCanvas.getContext("2d"), phyCanvas.getContext("2d")];
+
 var x = 70;
 var y = 50;
 var radius = 45;
@@ -12,47 +15,24 @@ var startAngle = 1.5 * Math.PI;
 var counterClockwise = false;
 
 function initCircle() {
-	offCTX.beginPath();
-	offCTX.arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-	offCTX.lineWidth = 5;
-	offCTX.strokeStyle = 'gray';
-	offCTX.stroke();
 	
-	offCTX.fillStyle = 'red';
-	offCTX.beginPath();
-	offCTX.font = "20px Lato";
-	offCTX.textAlign="center"; 
-	offCTX.fillText("WEAK",70,130);
-	offCTX.stroke();
-	offCTX.closePath();
+	for (var i = 0; i < canvas.length; i++) {
+	ctx[i].beginPath();
+	ctx[i].arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
+	ctx[i].lineWidth = 5;
+	ctx[i].strokeStyle = 'gray';
+	ctx[i].stroke();
 	
-	defCTX.beginPath();
-	defCTX.arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-	defCTX.lineWidth = 5;
-	defCTX.strokeStyle = 'gray';
-	defCTX.stroke();
+	ctx[i].fillStyle = 'red';
+	ctx[i].beginPath();
+	ctx[i].font = "20px Lato";
+	ctx[i].textAlign="center"; 
+	ctx[i].fillText("WEAK",70,130);
+	ctx[i].stroke();
+	ctx[i].closePath();
 	
-	defCTX.fillStyle = 'red';
-	defCTX.beginPath();
-	defCTX.font = "20px Lato";
-	defCTX.textAlign="center"; 
-	defCTX.fillText("WEAK",70,130);
-	defCTX.stroke();
-	defCTX.closePath();
-	
-	phyCTX.beginPath();
-	phyCTX.arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-	phyCTX.lineWidth = 5;
-	phyCTX.strokeStyle = 'gray';
-	phyCTX.stroke();
-	
-	phyCTX.fillStyle = 'red';
-	phyCTX.beginPath();
-	phyCTX.font = "20px Lato";
-	phyCTX.textAlign="center"; 
-	phyCTX.fillText("WEAK",70,130);
-	phyCTX.stroke();
-	phyCTX.closePath();
+	}
+
 }
 
 function drawCircles(off, off2, def, def2, phy, phy2) {
@@ -60,274 +40,99 @@ function drawCircles(off, off2, def, def2, phy, phy2) {
 	var endAngleDEF =  1.5 * Math.PI - (0.062831853071792 * (100 - def));
 	var endAnglePHY =  1.5 * Math.PI - (0.062831853071792 * (100 - phy));
 
-	offCTX.clearRect(0, 0, offCanvas.width, offCanvas.height);
-	defCTX.clearRect(0, 0, defCanvas.width, defCanvas.height);
-	phyCTX.clearRect(0, 0, phyCanvas.width, phyCanvas.height);
-
-	// Full arc; background
-	offCTX.beginPath();
-	offCTX.arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-	offCTX.lineWidth = 5;
-	offCTX.strokeStyle = 'gray';
-	offCTX.stroke();
+	var stats = [off, def, phy];
+	var stats2 = [off2, def2, phy2];
 	
-	if (off > 70) {
-		offCTX.beginPath();
-		offCTX.arc(x, y, radius, startAngle, endAngleOFF, counterClockwise);
-		offCTX.lineWidth = 7;
-		offCTX.strokeStyle = 'green';
-		offCTX.stroke();
+	for (var i = 0; i < canvas.length; i++) {
+		ctx[i].clearRect(0,0, canvas[i].width, canvas[i].height);
 		
-		offCTX.fillStyle = 'green';
-		offCTX.beginPath();
-		offCTX.font = "20px Lato";
-		offCTX.textAlign="center"; 
-		offCTX.fillText("STRONG", 70, 130);
-		offCTX.fillText(off, 70, 50);
-		offCTX.stroke();
-		offCTX.closePath();
-	} else if (off > 60) {
-		offCTX.beginPath();
-		offCTX.arc(x, y, radius, startAngle, endAngleOFF, counterClockwise);
-		offCTX.lineWidth = 7;
-		offCTX.strokeStyle = 'orange';
-		offCTX.stroke();
+		ctx[i].beginPath();
+		ctx[i].arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
+		ctx[i].lineWidth = 5;
+		ctx[i].strokeStyle = 'gray';
+		ctx[i].stroke();
 		
-		offCTX.fillStyle = 'orange';
-		offCTX.beginPath();
-		offCTX.font = "20px Lato";
-		offCTX.textAlign="center"; 
-		offCTX.fillText("MEDIUM", 70, 130);
-		offCTX.fillText(off, 70, 50);
-		offCTX.stroke();
-		offCTX.closePath();
-	} else {
-		offCTX.beginPath();
-		offCTX.arc(x, y, radius, startAngle, endAngleOFF, counterClockwise);
-		offCTX.lineWidth = 7;
-		offCTX.strokeStyle = 'red';
-		offCTX.stroke();
+		if (stats[i] > 70) {
+			ctx[i].beginPath();
+			ctx[i].arc(x, y, radius, startAngle, endAngleOFF, counterClockwise);
+			ctx[i].lineWidth = 7;
+			ctx[i].strokeStyle = 'green';
+			ctx[i].stroke();
+			
+			ctx[i].fillStyle = 'green';
+			ctx[i].beginPath();
+			ctx[i].font = "20px Lato";
+			ctx[i].textAlign="center"; 
+			ctx[i].fillText("STRONG", 70, 130);
+			ctx[i].fillText(stats[i], 70, 50);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		} else if (stats[i] > 60) {
+			ctx[i].beginPath();
+			ctx[i].arc(x, y, radius, startAngle, endAngleOFF, counterClockwise);
+			ctx[i].lineWidth = 7;
+			ctx[i].strokeStyle = 'orange';
+			ctx[i].stroke();
+			
+			ctx[i].fillStyle = 'orange';
+			ctx[i].beginPath();
+			ctx[i].font = "20px Lato";
+			ctx[i].textAlign="center"; 
+			ctx[i].fillText("MEDIUM", 70, 130);
+			ctx[i].fillText(stats[i], 70, 50);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		} else {
+			ctx[i].beginPath();
+			ctx[i].arc(x, y, radius, startAngle, endAngleOFF, counterClockwise);
+			ctx[i].lineWidth = 7;
+			ctx[i].strokeStyle = 'red';
+			ctx[i].stroke();
+			
+			ctx[i].fillStyle = 'red';
+			ctx[i].beginPath();
+			ctx[i].font = "20px Lato";
+			ctx[i].textAlign="center"; 
+			ctx[i].fillText("WEAK", 70, 130);
+			ctx[i].fillText(stats[i], 70, 50);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		}
 		
-		offCTX.fillStyle = 'red';
-		offCTX.beginPath();
-		offCTX.font = "20px Lato";
-		offCTX.textAlign="center"; 
-		offCTX.fillText("WEAK", 70, 130);
-		offCTX.fillText(off, 70, 50);
-		offCTX.stroke();
-		offCTX.closePath();
-	}
-
-	// Full arc; background
-	defCTX.beginPath();
-	defCTX.arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-	defCTX.lineWidth = 5;
-	defCTX.strokeStyle = 'gray';
-	defCTX.stroke();
-
-	// Overlaying arc; foreground
-
-	if (def > 70) {
-		defCTX.beginPath();
-		defCTX.arc(x, y, radius, startAngle, endAngleDEF, counterClockwise);
-		defCTX.lineWidth = 7;
-		defCTX.strokeStyle = 'green';
-		defCTX.stroke();
+		if (isNaN(stats2[i])) {
+			ctx[i].fillStyle = 'green';
+			ctx[i].beginPath();
+			ctx[i].font = "15px Lato";
+			ctx[i].textAlign="center";
+			ctx[i].fillText("+ " + (stats[i]), 70, 70);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		} else if (stats[i] > stats2[i]) {
+			ctx[i].fillStyle = 'green';
+			ctx[i].beginPath();
+			ctx[i].font = "15px Lato";
+			ctx[i].textAlign="center";
+			ctx[i].fillText("+ " + (stats[i] - stats2[i]), 70, 70);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		} else if (stats[i] < stats2[i]) {
+			ctx[i].fillStyle = 'red';
+			ctx[i].beginPath();
+			ctx[i].font = "15px Lato";
+			ctx[i].textAlign="center";
+			ctx[i].fillText((stats[i] - stats2[i]), 70, 70);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		} else {
+			ctx[i].fillStyle = 'orange';
+			ctx[i].beginPath();
+			ctx[i].font = "15px Lato";
+			ctx[i].textAlign="center";
+			ctx[i].fillText("+ 0", 70, 70);
+			ctx[i].stroke();
+			ctx[i].closePath();
+		}
 		
-		defCTX.fillStyle = 'green';
-		defCTX.beginPath();
-		defCTX.font = "20px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText("STRONG", 70, 130);
-		defCTX.fillText(def, 70, 50);
-		defCTX.stroke();
-		defCTX.closePath();
-	} else if (def > 60) {
-		defCTX.beginPath();
-		defCTX.arc(x, y, radius, startAngle, endAngleDEF, counterClockwise);
-		defCTX.lineWidth = 7;
-		defCTX.strokeStyle = 'orange';
-		defCTX.stroke();
-		
-		defCTX.fillStyle = 'orange';
-		defCTX.beginPath();
-		defCTX.font = "20px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText("MEDIUM", 70, 130);
-		defCTX.fillText(def, 70, 50);
-		defCTX.stroke();
-		defCTX.closePath();
-	} else {
-		defCTX.beginPath();
-		defCTX.arc(x, y, radius, startAngle, endAngleDEF, counterClockwise);
-		defCTX.lineWidth = 7;
-		defCTX.strokeStyle = 'red';
-		defCTX.stroke();
-		
-		defCTX.fillStyle = 'red';
-		defCTX.beginPath();
-		defCTX.font = "20px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText("WEAK", 70, 130);
-		defCTX.fillText(def, 70, 50);
-		defCTX.stroke();
-		defCTX.closePath();
-	}
-
-	// Full arc; background
-	phyCTX.beginPath();
-	phyCTX.arc(x, y, radius, startAngle, 1.4999 * Math.PI, counterClockwise);
-	phyCTX.lineWidth = 5;
-	phyCTX.strokeStyle = 'gray';
-	phyCTX.stroke();
-
-	if (phy > 70) {
-		phyCTX.beginPath();
-		phyCTX.arc(x, y, radius, startAngle, endAnglePHY, counterClockwise);
-		phyCTX.lineWidth = 7;
-		phyCTX.strokeStyle = 'green';
-		phyCTX.stroke();
-		
-		phyCTX.fillStyle = 'green';
-		phyCTX.beginPath();
-		phyCTX.font = "20px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText("STRONG", 70, 130);
-		phyCTX.fillText(phy, 70, 50);
-		phyCTX.stroke();
-		phyCTX.closePath();
-	} else if (phy > 60) {
-		phyCTX.beginPath();
-		phyCTX.arc(x, y, radius, startAngle, endAnglePHY, counterClockwise);
-		phyCTX.lineWidth = 7;
-		phyCTX.strokeStyle = 'orange';
-		phyCTX.stroke();
-		
-		phyCTX.fillStyle = 'orange';
-		phyCTX.beginPath();
-		phyCTX.font = "20px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText("MEDIUM", 70, 130);
-		phyCTX.fillText(phy, 70, 50);
-		phyCTX.stroke();
-		phyCTX.closePath();
-	} else {
-		phyCTX.beginPath();
-		phyCTX.arc(x, y, radius, startAngle, endAnglePHY, counterClockwise);
-		phyCTX.lineWidth = 7;
-		phyCTX.strokeStyle = 'red';
-		phyCTX.stroke();
-		
-		phyCTX.fillStyle = 'red';
-		phyCTX.beginPath();
-		phyCTX.font = "20px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText("WEAK", 70, 130);
-		phyCTX.fillText(phy, 70, 50);
-		phyCTX.stroke();
-		phyCTX.closePath();
-	}
-	
-	if (isNaN(off2)) {
-		offCTX.fillStyle = 'green';
-		offCTX.beginPath();
-		offCTX.font = "15px Lato";
-		offCTX.textAlign="center";
-		offCTX.fillText("+ " + (off), 70, 70);
-		offCTX.stroke();
-		offCTX.closePath();
-	} else if (off > off2) {
-		offCTX.fillStyle = 'green';
-		offCTX.beginPath();
-		offCTX.font = "15px Lato";
-		offCTX.textAlign="center";
-		offCTX.fillText("+ " + (off - off2), 70, 70);
-		offCTX.stroke();
-		offCTX.closePath();
-	} else if (off < off2) {
-		offCTX.fillStyle = 'red';
-		offCTX.beginPath();
-		offCTX.font = "15px Lato";
-		offCTX.textAlign="center";
-		offCTX.fillText((off - off2), 70, 70);
-		offCTX.stroke();
-		offCTX.closePath();
-	} else {
-		offCTX.fillStyle = 'orange';
-		offCTX.beginPath();
-		offCTX.font = "15px Lato";
-		offCTX.textAlign="center";
-		offCTX.fillText("+ 0", 70, 70);
-		offCTX.stroke();
-		offCTX.closePath();
-	}
-		
-	if (isNaN(def2)) {
-		defCTX.fillStyle = 'green';
-		defCTX.beginPath();
-		defCTX.font = "15px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText("+ " + (def), 70, 70);
-		defCTX.stroke();
-		defCTX.closePath();
-	} else if (def > def2) {
-		defCTX.fillStyle = 'green';
-		defCTX.beginPath();
-		defCTX.font = "15px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText("+ " + (def - def2), 70, 70);
-		defCTX.stroke();
-		defCTX.closePath();
-	} else if (def < def2) {
-		defCTX.fillStyle = 'red';
-		defCTX.beginPath();
-		defCTX.font = "15px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText((def - def2), 70, 70);
-		defCTX.stroke();
-		defCTX.closePath();
-	} else {
-		defCTX.fillStyle = 'orange';
-		defCTX.beginPath();
-		defCTX.font = "15px Lato";
-		defCTX.textAlign="center";
-		defCTX.fillText("+ 0", 70, 70);
-		defCTX.stroke();
-		defCTX.closePath();
-	}
-	
-	if (isNaN(phy2)) {
-		phyCTX.fillStyle = 'green';
-		phyCTX.beginPath();
-		phyCTX.font = "15px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText("+ " + (phy), 70, 70);
-		phyCTX.stroke();
-		phyCTX.closePath();
-	} else if (phy > phy2) {
-		phyCTX.fillStyle = 'green';
-		phyCTX.beginPath();
-		phyCTX.font = "15px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText("+ " + (phy - phy2), 70, 70);
-		phyCTX.stroke();
-		phyCTX.closePath();
-	} else if (phy < phy2) {
-		phyCTX.fillStyle = 'red';
-		phyCTX.beginPath();
-		phyCTX.font = "15px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText((phy - phy2), 70, 70);
-		phyCTX.stroke();
-		phyCTX.closePath();
-	} else {
-		phyCTX.fillStyle = 'orange';
-		phyCTX.beginPath();
-		phyCTX.font = "15px Lato";
-		phyCTX.textAlign="center";
-		phyCTX.fillText("+ 0", 70, 70);
-		phyCTX.stroke();
-		phyCTX.closePath();
 	}
 		
 	/*

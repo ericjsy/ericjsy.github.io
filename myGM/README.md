@@ -71,4 +71,7 @@
 - Tooltip arrow adjustments.
 
 ### v0.7.0 - June 29, 2017
-- Implemented dynamic team stat changes in response to selected player.
+- Implemented dynamic team stat changes with respect to selected player.
+
+### v0.7.1 - June 29, 2017
+- Optimized canvas drawings into a loop.
