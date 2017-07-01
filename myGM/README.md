@@ -85,3 +85,8 @@
 
 ### v0.7.4 - July 1, 2017
 - Cleaned up canvas and calculation of stats.
+
+### v0.8.0 - July 1, 2017
+- Ensured array of drafts populated with last name and first name only.
+- Added titles to bottom components.
+- Resized and adjusted spacing of stat circles, roster slots and draft summary.

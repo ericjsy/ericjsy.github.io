@@ -57,7 +57,7 @@
 				<label for="teamFilter">Team</label><br>
 			</div>
 			<div id="dropdownFilter" onchange="dropdownList()">
-				<select size="1" id="teamList" class="disabled" disabled>
+				<select size="1" id="teamList" disabled>
 					<option value="LGE" id="LGE">All Teams</option>
 				</select>
 			</div>
@@ -220,61 +220,84 @@
 			</div>
 		</div>
 		<div id="userInfo">
-			<div id="teamBreakdown">
-				<div id="placeholder">
-				</div>
-				<div>
-					<canvas id="offCanvas" height="140" width="140"></canvas>
-				</div>
-				<div>
-					<canvas id="defCanvas" height="140" width="140"></canvas>
-				</div>
-				<div>
-					<canvas id="phyCanvas" height="140" width="140"></canvas>
-				</div>
+			<div class="title">
+				<h2>Placeholder</h2>
+				<span class="tooltip"></span>
+			</div>
+		</div>
+		<div id="statBreakdown">
+			<div class="title">
+				<h2>Placeholder</h2>
+				<span class="tooltip"></span>
+			</div>		
+			<div>
+				<canvas id="offCanvas" height="110" width="110"></canvas>
+			</div>
+			<div>
+				<canvas id="defCanvas" height="110" width="110"></canvas>
+			</div>
+			<div>
+				<canvas id="phyCanvas" height="110" width="110"></canvas>
+			</div>
+		</div>
+		<div id="statSpread">
+			<div class="title">
+				<h2>Placeholder</h2>
+				<span class="tooltip"></span>
 			</div>
 			<div id="canvas">
 				<canvas id="layer1">Your browser does not support the HTML5 canvas tag.</canvas>
 				<canvas id="layer2"></canvas>
 			</div>
+		</div>
+		<div id="statProgress">
+			<div class="title">
+				<h2>Placeholder</h2>
+				<span class="tooltip"></span>
+			</div>
 			<div id="rosterSlots">
-				<ul>
-					<li>
-						<span id="countC">Centers: 0/4</span>
-						<div id="centerTotal">
+				<table>
+					<tr>
+						<td>Centers:</td>
+						<td id="centerTotal">
 							<div id="centerCheck"></div>
 							<div id="centerProgress"></div>
-						</div>
-					</li>
-					<li>
-						<span id="countLW">Left Wings: 0/4</span>
-						<div id="leftWingTotal">
+						</td>
+						<td id="countC">0/4</td>
+					</tr>
+					<tr>
+						<td>Left Wings:</td>
+						<td id="leftWingTotal">
 							<div id="leftWingCheck"></div>
 							<div id="leftWingProgress"></div>
-						</div>
-					</li>
-					<li>
-						<span id="countRW">Right Wings: 0/4</span>
-						<div id="rightWingTotal">
+						</td>
+						<td id="countLW">0/4</td>
+					</tr>
+					<tr>
+						<td>Right Wings:</td>
+						<td id="rightWingTotal">
 							<div id="rightWingCheck"></div>
 							<div id="rightWingProgress"></div>
-						</div>
-					</li>
-					<li>
-						<span id="countD">Defensemen: 0/6</span>
-						<div id="defenseTotal">
+						</td>
+						<td id="countRW">0/4</td>
+					</tr>
+					<tr>
+						<td>Defensemen:</td>
+						<td id="defenseTotal">
 							<div id="defenseCheck"></div>
 							<div id="defenseProgress"></div>
-						</div>
-					</li>
-					<li>
-						<span id="countG">Goalies: 0/2</span>
-						<div id="goalieTotal">
+						</td>
+						<td id="countD">0/6</td>
+					</tr>
+					<tr>
+						<td>Goalies:</td>
+						<td id="goalieTotal">
 							<div id="goalieCheck"></div>
 							<div id="goalieProgress"></div>
-						</div>
-					</li>
-				</ul>
+						</td>
+						<td id="countG">0/2</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</main>

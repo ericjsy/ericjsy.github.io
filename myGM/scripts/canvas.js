@@ -10,9 +10,9 @@ var ctx = [
 		phyCanvas.getContext("2d")
 	];
 
-var x = 70;
-var y = 50;
-var radius = 45;
+var x = 55;
+var y = 40;
+var radius = 35;
 var startAngle = 1.5 * Math.PI;
 
 // Draw placeholders
@@ -99,13 +99,13 @@ function drawText(index, message, color, value, difference) {
 	ctx[index].fillStyle = color;
 	ctx[index].font = "20px Lato";
 	ctx[index].textAlign="center"; 
-	ctx[index].fillText(message, 70, 130);
+	ctx[index].fillText(message, 55, 110);
 	
 	if (value == 0) {
 		ctx[index].fillStyle = 'red';
-		ctx[index].fillText(0,70,50);
+		ctx[index].fillText(0,55,40);
 	} else {
-		ctx[index].fillText(value, 70, 50);				
+		ctx[index].fillText(value, 55, 40);				
 	}
 	
 	ctx[index].stroke();
@@ -117,16 +117,16 @@ function drawText(index, message, color, value, difference) {
 			
 	if (isNaN(difference)) {
 		ctx[index].fillStyle = 'green';
-		ctx[index].fillText("+ " + value, 70, 70);
+		ctx[index].fillText("+ " + value, 55, 60);
 	} else if (value > difference) {
 		ctx[index].fillStyle = 'green';
-		ctx[index].fillText("+ " + (value - difference), 70, 70);
+		ctx[index].fillText("+ " + (value - difference), 55, 60);
 	} else if (value < difference) {
 		ctx[index].fillStyle = 'red';
-		ctx[index].fillText(value - difference, 70, 70);
+		ctx[index].fillText(value - difference, 55, 60);
 	} else {
 		ctx[index].fillStyle = 'orange';
-		ctx[index].fillText("+ 0", 70, 70);
+		ctx[index].fillText("+ 0", 55, 60);
 	}
 	
 	ctx[index].stroke();

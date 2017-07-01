@@ -61,8 +61,6 @@ function initApp() {
 	
 	});
 
-	console.log(leagueTeams);
-	
 	initCircle();
 	
 }
@@ -323,8 +321,11 @@ function addPlayer() {
 	var pText = playerList.options[playerList.selectedIndex].text;
 	var pValue = playerList.options[playerList.selectedIndex].value;
 	
-	leagueTeams[0].push(draftOverall + " - " + pText);
-	teamSummary.innerHTML += leagueTeams[0][leagueTeams[0].length - 1] + "<br>";
+	var stringStart = pText.indexOf("-");
+	var stringEnd = pText.indexOf("(");
+	
+	leagueTeams[0].push(pText.substring(stringStart + 2, stringEnd -1));
+	teamSummary.innerHTML += draftOverall + " - " + pText + "<br>";
 
 	for (var i = 0; i < playerList.length; i++) {
 		if (playerList.options[i].value == pValue) {
@@ -338,7 +339,7 @@ function addPlayer() {
 
 		if (position == 'C') {
 			centers++;
-			document.getElementById("countC").innerHTML = "Centers: " + centers + "/4";
+			document.getElementById("countC").innerHTML = centers + "/4";
 			
 			if (centers == 5) {
 				document.getElementById("centerProgress").style.backgroundColor = "red";
@@ -348,7 +349,7 @@ function addPlayer() {
 			
 		} else if (position == 'LW') {
 			leftwings++;
-			document.getElementById('countLW').innerHTML = "Left Wings: " + leftwings + "/4";
+			document.getElementById('countLW').innerHTML = leftwings + "/4";
 			
 			if (leftwings == 5) {
 				document.getElementById("leftWingProgress").style.backgroundColor = "red";
@@ -358,7 +359,7 @@ function addPlayer() {
 			
 		} else if (position == 'RW') {
 			rightwings++;
-			document.getElementById('countRW').innerHTML = "Right Wings: " + rightwings + "/4";
+			document.getElementById('countRW').innerHTML = rightwings + "/4";
 			
 			if (rightwings == 5) {
 				document.getElementById("rightWingProgress").style.backgroundColor = "red";
@@ -368,7 +369,7 @@ function addPlayer() {
 			
 		} else if (position == 'LD' || position == 'RD') {
 			defensemen++;
-			document.getElementById('countD').innerHTML = "Defensemen: " + defensemen + "/6";
+			document.getElementById('countD').innerHTML = defensemen + "/6";
 			
 			if (defensemen == 7) {
 				document.getElementById("defenseProgress").style.backgroundColor = "red";
@@ -378,7 +379,7 @@ function addPlayer() {
 			
 		} else if (position == 'G') {
 			goalies++;
-			document.getElementById('countG').innerHTML = "Goalies: " + goalies + "/2";
+			document.getElementById('countG').innerHTML = goalies + "/2";
 			
 			if (goalies == 3) {
 				document.getElementById("goalieProgress").style.backgroundColor = "red";
@@ -400,22 +401,22 @@ function addPlayer() {
 	
 	});
 	
-	updateRoundList(pText);
+	updateRoundList(pText, leagueTeams[0][0]);
 	
 	database.ref('players/' + pValue + '/drafted/').set(true);
 	counter++;
 	
-	//compDraft();
+	compDraft();
 	
 }
 
-function updateRoundList(string) {
+function updateRoundList(string, team) {
 
 	var stringStart = string.indexOf("-");
 	var stringEnd = string.indexOf(")");
 
 	var lists = document.createElement("li");
-	var info = document.createTextNode((counter + 1) + "(" + draftOverall + ") - " + string.substring(stringStart + 2, stringEnd + 1));
+	var info = document.createTextNode((counter + 1) + "(" + draftOverall + ") - " + team + " - " + string.substring(stringStart + 2, stringEnd + 1));
 	
 	if (counter == 0) {
 		lists.setAttribute("class", "important");
@@ -468,10 +469,13 @@ function compDraft() {
 	var cText = playerList.options[rand].text;
 	var cValue = playerList.options[rand].value;
 	
-	updateRoundList(cText);
+	updateRoundList(cText, leagueTeams[counter][0]);
 	
-	leagueTeams[counter].push(cText);
-
+	var stringStart = cText.indexOf("-");
+	var stringEnd = cText.indexOf("(");
+	
+	leagueTeams[counter].push(cText.substring(stringStart + 2, stringEnd -1));
+		
 	for (var i = 0; i < playerList.length; i++) {
 		if (playerList.options[i].value == cValue) {
 			playerList.remove(i);
