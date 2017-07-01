@@ -15,158 +15,123 @@ var y = 50;
 var radius = 45;
 var startAngle = 1.5 * Math.PI;
 
-// onload function to build placeholders 
+// Draw placeholders
 function initCircle() {
 	
-	for (var i = 0; i < canvas.length; i++) {
+	for (var index = 0; index < canvas.length; index++) {
 		
-		generateBG(i, 'red');
-		generateText(i, 'WEAK', 0, 'red');
+		drawBG(index, 'red');
+		drawText(index, 'WEAK', 'red', 0);
 	
 	}
 
 }
 
-// background circle
-function generateBG(stat, color) {
+// Dynamically manipulate stats circles
+function drawCircles(newOff, avgOff, newDef, avgDef, newPhy, avgPhy) {
+	var endAngleOff =  1.5 * Math.PI - (0.062831853071792 * (100 - newOff));
+	var endAngleDef =  1.5 * Math.PI - (0.062831853071792 * (100 - newDef));
+	var endAnglePhy =  1.5 * Math.PI - (0.062831853071792 * (100 - newPhy));
+	var endAngle = [endAngleOff, endAngleDef, endAnglePhy];
+	
+	var value = [newOff, newDef, newPhy];
+	var difference = [avgOff, avgDef, avgPhy];
+	
+	for (var index = 0; index < canvas.length; index++) {
 		
-	ctx[stat].beginPath();
-	ctx[stat].arc(x, y, radius, startAngle, 1.4999 * Math.PI, false);
-	ctx[stat].lineWidth = 5;
-	ctx[stat].strokeStyle = color;
-	ctx[stat].stroke();
-	
-}
-
-// foreground circle
-function generateFG(stat, endAngle, color) {
-	
-	ctx[stat].beginPath();
-	ctx[stat].arc(x, y, radius, startAngle, endAngle, false);
-	ctx[stat].lineWidth = 7;
-	ctx[stat].strokeStyle = color;
-	ctx[stat].stroke();
-	
-}
-
-// print the new center value and the amount it was changed
-function generateText(stat, message, value, color) {
-	
-	ctx[stat].fillStyle = color;
-	ctx[stat].beginPath();
-	ctx[stat].font = "20px Lato";
-	ctx[stat].textAlign="center"; 
-	ctx[stat].fillText(message, 70, 130);
-	ctx[stat].fillText(value, 70, 50);
-	ctx[stat].stroke();
-	ctx[stat].closePath();
-	
-}
-
-// dynamic manipulation of stat circles
-function drawCircles(off, off2, def, def2, phy, phy2) {
-	var endAngleOFF =  1.5 * Math.PI - (0.062831853071792 * (100 - off));
-	var endAngleDEF =  1.5 * Math.PI - (0.062831853071792 * (100 - def));
-	var endAnglePHY =  1.5 * Math.PI - (0.062831853071792 * (100 - phy));
-	var endAngle = [endAngleOFF, endAngleDEF, endAnglePHY];
-	
-	var stats = [off, def, phy];
-	var stats2 = [off2, def2, phy2];
-	
-	for (var i = 0; i < canvas.length; i++) {
-		ctx[i].clearRect(0,0, canvas[i].width, canvas[i].height);
+		ctx[index].clearRect(0,0, canvas[index].width, canvas[index].height);
 		
-		ctx[i].font = "20px Lato";
-		ctx[i].textAlign="center";
+		drawBG(index, 'gray');
 		
-		generateBG(i, 'gray');
-		
-		if (stats[i] > 70) {
+		if (value[index] > 70) {
 			
-			generateFG(i, endAngle[i], 'green');
+			drawFG(index, endAngle[index], 'green');
+			drawText(index, "STRONG", 'green', value[index], difference[index]);
 			
-			ctx[i].fillStyle = 'green';
-			ctx[i].beginPath(); 
-			ctx[i].fillText("STRONG", 70, 130);
+		} else if (value[index] > 60) {
 			
-			if (isNaN(stats2[i])) {
-				ctx[i].fillStyle = 'red';
-				ctx[i].fillText(0,70,50);
-			} else {
-				ctx[i].fillText(stats[i], 70, 50);				
-			}
-			
-			ctx[i].stroke();
-			ctx[i].closePath();
-			
-		} else if (stats[i] > 60) {
-			
-			generateFG(i, endAngle[i], 'orange');
-			
-			ctx[i].fillStyle = 'orange';
-			ctx[i].beginPath();
-			ctx[i].fillText("MEDIUM", 70, 130);
-			
-			if (isNaN(stats2[i])) {
-				ctx[i].fillStyle = 'red';
-				ctx[i].fillText(0,70,50);
-			} else {
-				ctx[i].fillText(stats[i], 70, 50);
-			}
-			
-			ctx[i].stroke();
-			ctx[i].closePath();	
+			drawFG(index, endAngle[index], 'orange');
+			drawText(index, "MEDIUM", 'orange', value[index], difference[index]);	
 			
 		} else {
 			
-			generateFG(i, endAngle[i], 'red');
-			
-			ctx[i].fillStyle = 'red';
-			ctx[i].beginPath();
-			ctx[i].fillText("WEAK", 70, 130);
-			
-			if (isNaN(stats2[i])) {
-				ctx[i].fillStyle = 'red';
-				ctx[i].fillText(0,70,50);
-			} else {
-				ctx[i].fillText(stats[i], 70, 50);
-			}
-			
-			ctx[i].stroke();
-			ctx[i].closePath();
-			
-		}
-			
-		ctx[i].font = "15px Lato";
-			
-		if (isNaN(stats2[i])) {
-			ctx[i].fillStyle = 'green';
-			ctx[i].beginPath();
-			ctx[i].fillText("+ " + (stats[i]), 70, 70);
-			ctx[i].stroke();
-			ctx[i].closePath();
-		} else if (stats[i] > stats2[i]) {
-			ctx[i].fillStyle = 'green';
-			ctx[i].beginPath();
-			ctx[i].fillText("+ " + (stats[i] - stats2[i]), 70, 70);
-			ctx[i].stroke();
-			ctx[i].closePath();
-		} else if (stats[i] < stats2[i]) {
-			ctx[i].fillStyle = 'red';
-			ctx[i].beginPath();
-			ctx[i].fillText((stats[i] - stats2[i]), 70, 70);
-			ctx[i].stroke();
-			ctx[i].closePath();
-		} else {
-			ctx[i].fillStyle = 'orange';
-			ctx[i].beginPath();
-			ctx[i].fillText("+ 0", 70, 70);
-			ctx[i].stroke();
-			ctx[i].closePath();
+			drawFG(index, endAngle[index], 'red');
+			drawText(index, "WEAK", 'red', value[index], difference[index]);
+						
 		}
 		
 	}
 		
+}
+
+// Draw background circle
+function drawBG(index, color) {
+		
+	ctx[index].beginPath();
+	ctx[index].arc(x, y, radius, startAngle, 1.4999 * Math.PI, false);
+	ctx[index].lineWidth = 5;
+	ctx[index].strokeStyle = color;
+	ctx[index].stroke();
+	
+}
+
+// Draw foreground circle
+function drawFG(index, endAngle, color) {
+	
+	ctx[index].beginPath();
+	ctx[index].arc(x, y, radius, startAngle, endAngle, false);
+	ctx[index].lineWidth = 7;
+	ctx[index].strokeStyle = color;
+	ctx[index].stroke();
+	
+}
+
+// Draw text components
+function drawText(index, message, color, value, difference) {
+	
+	difference = difference || 0;
+	
+	value = Math.round(value);
+	difference = Math.round(difference);
+	
+	// Draw value and message
+	ctx[index].beginPath();
+	ctx[index].fillStyle = color;
+	ctx[index].font = "20px Lato";
+	ctx[index].textAlign="center"; 
+	ctx[index].fillText(message, 70, 130);
+	
+	if (value == 0) {
+		ctx[index].fillStyle = 'red';
+		ctx[index].fillText(0,70,50);
+	} else {
+		ctx[index].fillText(value, 70, 50);				
+	}
+	
+	ctx[index].stroke();
+	ctx[index].closePath();
+	
+	// Draw difference
+	ctx[index].beginPath();	
+	ctx[index].font = "15px Lato";	
+			
+	if (isNaN(difference)) {
+		ctx[index].fillStyle = 'green';
+		ctx[index].fillText("+ " + value, 70, 70);
+	} else if (value > difference) {
+		ctx[index].fillStyle = 'green';
+		ctx[index].fillText("+ " + (value - difference), 70, 70);
+	} else if (value < difference) {
+		ctx[index].fillStyle = 'red';
+		ctx[index].fillText(value - difference, 70, 70);
+	} else {
+		ctx[index].fillStyle = 'orange';
+		ctx[index].fillText("+ 0", 70, 70);
+	}
+	
+	ctx[index].stroke();
+	ctx[index].closePath();
+
 }
 
 /*

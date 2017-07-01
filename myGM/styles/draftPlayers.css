@@ -546,9 +546,9 @@ header div:not(#help):not(#currentTab), #searchFilter, .title .tooltip, #timer .
 	
 	#teamBreakdown canvas {
 		left: 50%;
-		top: 5%;
+		top: 50%;
 		position: absolute;
-		transform: translateX(-50%);
+		transform: translate(-50%, -50%);
 	}
 	
 	#canvas {

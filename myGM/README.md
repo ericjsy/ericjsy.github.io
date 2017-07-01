@@ -82,3 +82,6 @@
 
 ### v0.7.3 - June 30, 2017
 - Cleaned up canvas.
+
+### v0.7.4 - July 1, 2017
+- Cleaned up canvas and calculation of stats.

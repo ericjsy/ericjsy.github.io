@@ -21,12 +21,9 @@ var rightwings = 0;
 var defensemen = 0;
 var goalies = 0;
 
-var totalOffense = 0;
-var totalDefense = 0;
-var totalPhysical = 0;
-var tempOffense = 0;
-var tempDefense = 0;
-var tempPhysical = 0;
+var sumOff = 0;
+var sumDef = 0;
+var sumPhy = 0;
 
 var counter = 0;
 var draftOverall = 1;
@@ -117,32 +114,27 @@ function selectPlayer() {
 	
 	updatePlayerCard(pValue);
 	updateProgress(pValue);
+	updateStats(pValue);
+	
+}
+
+function updateStats(pValue) {
 	
 	database.ref('players/' + pValue).once('value').then(function(snapshot) {
-
-		if (snapshot.val().position != 'G') {
-			var off = snapshot.val().offense;
-			var def = snapshot.val().defense;
-			var phy = snapshot.val().physical;
-		} else {	
-			var off = 0;
-			var def = 0;
-			var phy = 0;		
-		}
 	
-		var originalOffense = Math.round(totalOffense / (leagueTeams[0].length - 1));
-		var originalDefense = Math.round(totalDefense / (leagueTeams[0].length - 1));
-		var originalPhysical = Math.round(totalPhysical / (leagueTeams[0].length - 1));
+		var avgOff = sumOff / (leagueTeams[0].length - 1);
+		var avgDef = sumDef / (leagueTeams[0].length - 1);
+		var avgPhy = sumPhy / (leagueTeams[0].length - 1);
 
-		tempOffense = totalOffense + off;
-		tempDefense = totalDefense + def;
-		tempPhysical = totalPhysical + phy;
+		var tempOff = sumOff + (snapshot.val().position != 'G' ? snapshot.val().offense : 0);
+		var tempDef = sumDef + (snapshot.val().position != 'G' ? snapshot.val().defense : 0);
+		var tempPhy = sumPhy + (snapshot.val().position != 'G' ? snapshot.val().physical : 0);
 
-		var percentOffense = Math.round(tempOffense / (leagueTeams[0].length));
-		var percentDefense = Math.round(tempDefense / (leagueTeams[0].length));
-		var percentPhysical = Math.round(tempPhysical / (leagueTeams[0].length));		
+		var newOff = tempOff / (leagueTeams[0].length);
+		var newDef = tempDef / (leagueTeams[0].length);
+		var newPhy = tempPhy / (leagueTeams[0].length);		
 		
-		drawCircles(percentOffense, originalOffense, percentDefense, originalDefense, percentPhysical, originalPhysical);
+		drawCircles(newOff, avgOff, newDef, avgDef, newPhy, avgPhy);
 		
 	});
 	
@@ -400,18 +392,10 @@ function addPlayer() {
 	
 	database.ref('players/' + pValue).once('value').then(function(snapshot) {
 	
-		var off = snapshot.val().offense;
-		var def = snapshot.val().defense;
-		var phy = snapshot.val().physical;
-	
-		if (snapshot.val().position != 'G') {
-			console.log(off);
-			console.log(def);
-			console.log(phy);	
-
-			totalOffense += off;
-			totalDefense += def;
-			totalPhysical += phy;
+		if (snapshot.val().position != 'G') {	
+			sumOff += snapshot.val().offense;
+			sumDef += snapshot.val().defense;
+			sumPhy += snapshot.val().physical;
 		}
 	
 	});
